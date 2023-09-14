@@ -32,7 +32,7 @@ html, body {
 
 #main_div form{
     background-color: #F6F4EB;
-    height: 75%;
+    height: 60%;
     width: 25%;
     display: flex;
     align-items: center;
@@ -40,7 +40,7 @@ html, body {
     flex-direction: column;
     box-shadow: 0 0 2px rgba(28, 28, 28, 0.413);
     border: 0px solid black;
-    padding: 1% 1% 1% 1%;
+    padding: 2% 2% 2% 2%;
 }
 
 .form_div {
@@ -58,6 +58,22 @@ html, body {
     height: 50%;
     box-shadow: 0 0 2px rgba(28, 28, 28, 0.413);
     border: 0px solid black;
+    font-size: 16px;
+}
+
+.form_div input{
+    margin: 1%;
+    height: calc(50% - 20px);;
+    width: calc(80% - 20px);
+    padding: 10px;
+}
+
+.form_div button{
+    background-color: #91C8E4;
+}
+
+.form_div button:hover{
+    background-color: #749BC2;
 }
 
 .form_div input:focus {
