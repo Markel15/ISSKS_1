@@ -1,16 +1,65 @@
 * {
-    margin: 0;
     font-family: 'Roboto', sans-serif;
 }
 
-header div{
-    background-color: cadetblue;
-    height: 50px;
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#header_div{
+    background-color: #749BC2;
+    height: 100px;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
+#header_div #izenburua {
+    margin: 0;
+} 
+
 #main_div {
+    height: 80%;
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
+}
+
+#main_div form{
+    background-color: #F6F4EB;
+    height: 75%;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 0 2px rgba(28, 28, 28, 0.413);
+    border: 0px solid black;
+    padding: 1% 1% 1% 1%;
+}
+
+.form_div {
+    height: 30%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form_div input, .form_div button {
+    padding: 0;
+    width: 80%;
+    height: 50%;
+    box-shadow: 0 0 2px rgba(28, 28, 28, 0.413);
+    border: 0px solid black;
+}
+
+.form_div input:focus {
+    outline: none;
 }
