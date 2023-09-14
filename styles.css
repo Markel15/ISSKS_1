@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+header div{
+    background-color: cadetblue;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+#main_div {
+    display: flex;
+    align-items: center;
+}
