@@ -11,13 +11,14 @@ function ahalBadaSaioaSartu(erabiltzailea, pasahitza) {
 
 // Formularioa bidaltzeko funtzioa
 function saioanSartu() {
-
+    event.preventDefault();
     // Formularioko erabiltzaile izena eta pasahitza lortzen ditu
     const erabiltzailea = document.getElementById("erabiltzailea").value;
     const pasahitza = document.getElementById("pasahitza").value;
 
     // Saioa egiaztatzen du
     if (ahalBadaSaioaSartu(erabiltzailea, pasahitza)) {
+        console.log("Funtzioa exekutatzen da");
         window.location.href = "main.html";
     }
     else {
