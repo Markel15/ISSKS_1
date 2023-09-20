@@ -1,19 +1,18 @@
 <?php
-// Datos de configuración de la base de datos
-function conectarBaseDeDatos() {
-    $db_host = 'db';
-    $db_user = 'admin';
-    $db_pass = 'test';
-    $db_name = 'database';
+// Datu-basearen konfigurazioa
+function konektatuDatuBasera() {
+    $db_hosta = 'db';
+    $db_erabiltzaile = 'admin';
+    $db_pasahitza = 'test';
+    $db_izena = 'database';
 
-    // Conexión a la base de datos
-    $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+    // Datu-basearekin konekzioa
+    $konekzioa = mysqli_connect($db_hosta, $db_erabiltzaile, $db_pasahitza, $db_izena);
 
-    // Verificar la conexión
-    if (!$conn) {
-        die("Error al conectar a la base de datos: " . mysqli_connect_error());
+    // Konekzioa egiaztatu    
+    if (!$konekzioa) {
+        die("Datu-basearekin konekzioan errorea: " . mysqli_connect_error());
     }
-
-    return $conn;
+    return $konekzioa;
 }
 ?>

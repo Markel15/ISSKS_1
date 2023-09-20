@@ -1,34 +1,53 @@
 <?php
+// Datu-basearekin konekzioa duen fitxategia
 include 'config.php';
 
-$conexion = conectarBaseDeDatos();
+function pasahitzaEgokiaDa() {
+    // Aldagaiak hartu
+    global $erabiltzailea, $pasahitza, $konekzioa;
+    // Erabiltzailea bilatu datu-basean
+    $query = "SELECT * FROM ERABILTZAILEA WHERE Izena = '$erabiltzailea'";
+    $datuak = $konekzioa->query($query);
 
+    if ($datuak) {
+        if ($datuak->num_rows == 1) {
+            $fila = $datuak->fetch_assoc();
+            $gordetakoPasahitza = $fila['Pasahitza'];
+
+            // Pasahitza egokia dela egiaztatu
+            if ($pasahitza == $gordetakoPasahitza) {
+                // Pasahitza egokia da
+                return true;
+            }
+            else {
+                // Pasahitza ez da egokia
+                return false;
+            }
+        }
+        else {
+            // Erabiltzailea ez dago datu-basean
+            return false;
+        }
+        $datuak->close();
+    }
+    else {
+        // Konektatzerakoan errorea gertatu
+        echo "Errorea kontsultan: " . $konekzioa->error;
+    }
+}
+
+// Datu-basearekin konekzioa sortu
+$konekzioa = konektatuDatuBasera();
+// Datuak jaso
 $erabiltzailea = $_POST['erabiltzailea'];
 $pasahitza = $_POST['pasahitza'];
 
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-$query = "SELECT * FROM ERABILTZAILEA WHERE Izena = '$erabiltzailea'";
+    // Pasahitza egokia dela egiaztatu
+    $emaitza = pasahitzaEgokiaDa();
 
-$result = $conexion->query($query);
-
-if ($result) {
-    if ($result->num_rows == 1) {
-        $row = $result->fetch_assoc();
-        $gordetakoPasahitza = $row['pasahitza'];
-
-        // Verificar la contraseña
-        if (password_verify($pasahitza, $gordetakoPasahitza)) {
-            // La contraseña es correcta, puedes continuar con la lógica deseada
-            echo "Inicio de sesión exitoso";
-        } else {
-            echo "La contraseña es incorrecta";
-        }
-    } else {
-        echo "Nombre de usuario no encontrado";
-    }
-
-    $result->close();
-} else {
-    echo "Error en la consulta: " . $conexion->error;
+    header("Content-type: application/json");
+    echo json_encode(array("emaitza" => $emaitza));
 }
 ?>
