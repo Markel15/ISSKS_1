@@ -51,6 +51,36 @@ html, body {
     padding: 2% 2% 2% 2%;
 }
 
+#Taula{
+    height: 80%;
+    width: 100%;
+    border-collapse: collapse;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+th, td {
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #000;
+}
+
+th {
+  background-color: #2c5c8a;
+  color: #dbc2ab;
+}
+
+tr:nth-child(odd) {/*taula bakoitzetik bestera kolorez aldatu hobeto ikusteko asko badaude*/
+  background-color: #ede2d1;
+  color: #000;
+}
+
+td[contenteditable="true"]:focus { /*edita daitekeen elementua aukeratzean aldatu kolorez*/
+  background-color: #d1d9e0;
+  color: #000;
+  outline: none;
+}
+
 .div_formularioa {
     height: 30%;
     width: 100%;
@@ -75,7 +105,7 @@ html, body {
     padding: 10px;
 }
 
-.div_formularioa #signup_botoia{
+.div_formularioa #signup_botoia, #iz_em_bot{
     padding: 0;
     width: 80%;
     height: 50%;
@@ -103,6 +133,15 @@ html, body {
     text-decoration: underline; 
     border: none;
   }
+#iz_em_bot{
+  background-color: var(--color5);
+    border: none;
+}
+#iz_em_bot:hover{
+  background-color: var(--color5);
+    text-decoration: underline; 
+    border: none;
+}
 
 .div_formularioa input:focus {
     outline: none;
