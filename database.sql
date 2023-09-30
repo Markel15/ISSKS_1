@@ -27,16 +27,17 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `ERABILTZAILEA`
 --
 
-CREATE TABLE `ERABILTZAILEA` (
-  `Izena` varchar(20) NOT NULL,
-  `Pasahitza` varchar(20) NOT NULL
+CREATE TABLE ERABILTZAILEA (
+  Izena varchar(20) NOT NULL,
+  Pasahitza varchar(20) NOT NULL,
+  PRIMARY KEY (Izena)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `ERABILTZAILEA`
 --
 
-INSERT INTO `ERABILTZAILEA` (`Izena`, `Pasahitza`) VALUES
+INSERT INTO ERABILTZAILEA (Izena, Pasahitza) VALUES
 ('ANDER', 'ANDER');
 
 -- --------------------------------------------------------
@@ -45,29 +46,28 @@ INSERT INTO `ERABILTZAILEA` (`Izena`, `Pasahitza`) VALUES
 -- Estructura de tabla para la tabla `LIBURUA`
 --
 
-CREATE TABLE `LIBURUA` (
-  `Titulua` varchar(20) NOT NULL,
-  `Autorea` varchar(20) NOT NULL,
-  `Generoa` varchar(20) NOT NULL,
-  `Prezioa` float NOT NULL,
-  `ISBN` int(15) NOT NULL
+CREATE TABLE LIBURUA (
+  Titulua varchar(30) NOT NULL,
+  Autorea varchar(20) NOT NULL,
+  Generoa varchar(20) NOT NULL,
+  Prezioa float NOT NULL,
+  ISBN varchar(17) NOT NULL,
+  PRIMARY KEY (ISBN)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Índices para tablas volcadas
 --
 
+INSERT INTO LIBURUA VALUES
+('The Lord of the Rings', 'J.R.R. Tolkien', 'Fantasia', 30.05, '978-980-14-2517-5');
+INSERT INTO LIBURUA VALUES
+('Harry Potter', 'J.K. Rolling', 'Fantasia', 22.05, '978-980-14-3318-5');
+
 --
 -- Indices de la tabla `ERABILTZAILEA`
 --
-ALTER TABLE `ERABILTZAILEA`
-  ADD PRIMARY KEY (`Izena`);
 
---
--- Indices de la tabla `LIBURUA`
---
-ALTER TABLE `LIBURUA`
-  ADD PRIMARY KEY (`ISBN`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
