@@ -1,9 +1,7 @@
 <?php
-	include "config.php";
-	$sql="select izenburua, autorea from database";
-	$result=mysqli_query($konekzioa, $sql);
+    include 'config.php';
+    $konekzioa = konektatuDatuBasera();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,25 +21,47 @@
             <h1 id="izenburua">San Mamés Liburutegia</h1>
         </div>
     </header>
-	<table id="Taula" spellcheck="false">
-		<tr>
-			<th>Izenburua</th>
-			<th>Egilea</th>
-		</tr>
-		if(mysqli_num_rows($result)>0){
-			while($row= mysqli_fetch_assoc($result)){
-				echo =$row[]
-			}	
-		}
-		<!--<tr>
-			<td contenteditable="true">proba</td>
-			<td contenteditable="true">proba</td>
-		</tr>
-		<tr>
-			<td contenteditable="true">proba</td>
-			<td contenteditable="true">proba</td>
-		</tr> -->
-	</table>
-	<script src="js/script.js"></script>
+    <div id="div_nagusia">
+        <div id="div_edukia">
+            <?php
+                $sql = "SELECT * FROM LIBURUA";
+                $result = $konekzioa->query($sql);
+
+                while ($row = $result->fetch_assoc()) {
+                    echo "<div class='div_taula'>";
+                    echo "<div class='div_taula_sub'>";
+                    echo "<h2>" . $row["Titulua"] . "</h2>";
+                    echo "</div>";
+                    echo "<div class='div_taula_sub'>";
+                    echo "<p>Egilea: " . $row["Autorea"] . "</p>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "<table style='display: none;'>";
+                    echo "<tr>";
+                    echo "<th>Izenburua</th>";
+                    echo "<th>Egilea</th>";
+                    echo "<th>Generoa</th>";
+                    echo "<th>Prezioa</th>";
+                    echo "<th>ISBN</th>";
+                    echo "<th></th>";
+                    echo "<th></th>";
+                    echo "</tr>";
+                    echo "<tr>";
+                    echo "<td>" . $row["Titulua"] . "</td>";
+                    echo "<td>" . $row["Autorea"] . "</td>";
+                    echo "<td>" . $row["Generoa"] . "</td>";
+                    echo "<td>" . $row["Prezioa"] . "</td>";
+                    echo "<td>" . $row["ISBN"] . "</td>";
+                    echo "<td>Editatu</td>";
+                    echo "<td>Ezabatu</td>";
+                    echo "</tr>";
+                    echo "</table>";
+                }
+
+                $konekzioa->close();
+            ?>
+        </div>
+    </div>
+    <script src="js/script_main.js"></script>
 </body>
 </html>
