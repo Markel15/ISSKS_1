@@ -16,35 +16,41 @@
         	</div>
 	</header>
 	<div id="div_nagusia">
-		<form action="" class="login_formularioa">
+		<form method="post" action="sign.php" id="formularioa" class="login_formularioa">
 			<div class="div_formularioa">
                 		<h2>Datuak bete</h2>
             		</div>
             		<div class="div_formularioa">
-                		<input type="text" class="borde_ez" id="Izena" placeholder="Izena" pattern ="[A-Za-z]+" required title="Textua bakarrik onartzen da">
+                		<input type="text" class="borde_ez" id="Izena" name="Izena" placeholder="Izena" pattern ="[A-Za-z]+" required title="Textua bakarrik onartzen da">
             		</div>
             		<div class="div_formularioa">
-                		<input type="text" class="borde_ez" id="Abizenak" placeholder="Abizenak" pattern ="[A-Za-z]+" required title="Textua bakarrik onartzen da">
+                		<input type="text" class="borde_ez" id="Abizenak" name="Abizenak" placeholder="Abizenak" pattern ="[A-Za-z]+" required title="Textua bakarrik onartzen da">
             		</div>
             		<div class="div_formularioa">
-                		<input type="text" class="borde_ez" id="NAN" placeholder="NAN" pattern="^[0-9]{8}-[A-Z]$" required title="formatua: 11111111-Z">
+                		<input type="text" class="borde_ez" id="NAN" name="NAN" placeholder="NAN" pattern="^[0-9]{8}-[A-Z]$" required title="formatua: 11111111-Z">
             		</div>
                 <div class="div_formularioa">
-                		<input type="text" class="borde_ez" id="Telefonoa" placeholder="Telefonoa" pattern="[0-9]{9}" required title ="9 zenbaki izan behar dira">
+                		<input type="text" class="borde_ez" id="Telefonoa" name="Telefonoa" placeholder="Telefonoa" pattern="[0-9]{9}" required title ="9 zenbaki izan behar dira">
             		</div>
             		<div class="div_formularioa">
-                		<input type="text" class="borde_ez" id="JaioData" placeholder="Jaiotze-Data(uuuu-hh-ee)" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required title="uuuu-mm-dd formatua">
+                		<input type="text" class="borde_ez" id="JaioData" name="JaioData" placeholder="Jaiotze-Data(uuuu-hh-ee)" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required title="uuuu-mm-dd formatua">
             		</div>
             		<div class="div_formularioa">
-                		<input type="email" class="borde_ez" id="Email" placeholder="Email" required title="formatu egokia: adibidea@zerbitzaria.extensioa">
+                		<input type="email" class="borde_ez" id="Email" name="Email" placeholder="Email" required title="formatu egokia: adibidea@zerbitzaria.extensioa">
             		</div>
             		<div class="div_formularioa">
-                		<input type="password" class="borde_ez" id="pasahitza" placeholder="Pasahitza" required>
+                		<input type="password" class="borde_ez" id="pasahitza" name="pasahitza" placeholder="Pasahitza" required>
             		</div>
             		<div class="div_formularioa">
-                		<button type="submit" id="iz_em_bot">Eman izena</button>
+                		<button type="button" id="iz_em_bot" onclick="bidali()">Eman izena</button>
              		</div>
 		</form>
+		<script>
+			function bidali(){
+				var formulario = document.getElementById("formularioa");
+				formulario.submit();
+			}
+		</script>
 	</div>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="js/script.js"></script>
