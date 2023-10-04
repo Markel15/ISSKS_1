@@ -1,13 +1,13 @@
 <?php
-// Datu-basearekin konekzioa duen fitxategia
+// Datu-basearekin konexioa duen fitxategia
 include 'config.php';
 
 function pasahitzaEgokiaDa() {
     // Aldagaiak hartu
-    global $erabiltzailea, $pasahitza, $konekzioa;
+    global $erabiltzailea, $pasahitza, $konexioa;
     // Erabiltzailea bilatu datu-basean
     $query = "SELECT * FROM ERABILTZAILEA WHERE Izena = '$erabiltzailea'";
-    $datuak = $konekzioa->query($query);
+    $datuak = $konexioa->query($query);
 
     if ($datuak) {
         if ($datuak->num_rows == 1) {
@@ -32,12 +32,12 @@ function pasahitzaEgokiaDa() {
     }
     else {
         // Konektatzerakoan errorea gertatu
-        echo "Errorea kontsultan: " . $konekzioa->error;
+        echo "Errorea kontsultan: " . $konexioa->error;
     }
 }
 
-// Datu-basearekin konekzioa sortu
-$konekzioa = konektatuDatuBasera();
+// Datu-basearekin konexioa sortu
+$konexioa = konektatuDatuBasera();
 // Datuak jaso
 $erabiltzailea = $_POST['erabiltzailea'];
 $pasahitza = $_POST['pasahitza'];
