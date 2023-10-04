@@ -51,59 +51,6 @@ html, body {
     padding: 2% 2% 2% 2%;
 }
 
-#div_edukia{ /*main.html*/
-    background-color: var(--color2);
-    height: auto;
-    width: 65%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    box-shadow: 0 0 2px var(--color3);
-    padding: 2% 2% 2% 2%;
-}
-
-#Taula{
-    height: 80%;
-    width: 100%;
-    border-collapse: collapse;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-}
-
-th, td {
-  background-color: var(--color1);
-  padding: 0;
-  text-align: center;
-}
-
-table {
-    width: 100%;
-}
-
-tr {
-    width: 100%;
-}
-
-.div_taula{
-    height: auto;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    box-shadow: 0 0 2px var(--color3);
-}
-
-.div_taula_sub{
-    height: auto;
-    width: 50%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-}
-
 .div_formularioa {
     height: 30%;
     width: 100%;
@@ -159,12 +106,13 @@ tr {
 
 #iz_em_bot{
     background-color: var(--color5);
-      border: none;
+    border: none;
 }
-  #iz_em_bot:hover{
+
+#iz_em_bot:hover{
     background-color: var(--color5);
-      text-decoration: underline; 
-      border: none;
+    text-decoration: underline; 
+    border: none;
 }
 
 .div_formularioa input:focus {
