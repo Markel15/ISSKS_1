@@ -40,7 +40,6 @@ function saioanSartu() {
     // Formularioko erabiltzaile izena eta pasahitza lortzen ditu
     const erabiltzailea = document.getElementById("erabiltzailea").value;
     const pasahitza = document.getElementById("pasahitza").value;
-
     // Saioa egiaztatzen du
     if (!hutsikDago(erabiltzailea, pasahitza)) {
         // console.log("Funtzioa exekutatzen da");
@@ -53,7 +52,7 @@ function saioanSartu() {
                 var erantzuna = JSON.parse(xhr.responseText);
                 if (erantzuna.emaitza === true) {
                     // Erabiltzaile eta pasahitza egokiak
-                    window.location.href = "main.php";
+                    window.location.href = "aldatu.php";
                 } else {
                     // Erabiltzaile eta pasahitza ez egokiak
                     bordeGorriaIpiniKendu(true);
@@ -106,10 +105,8 @@ function nanKonprobatu(){
 const erabiltzailea_hutsune = document.getElementById("erabiltzailea");
 const pasahitza_hutsune = document.getElementById("pasahitza");
 var login_botoia = document.getElementById("login_botoia");
-login_botoia.addEventListener("click", saioanSartu);
 var signup_botoia = document.getElementById("signup_botoia");
 var sign_botoia = document.getElementById("iz_em_bot");
-
 if (login_botoia) {
     // Konprobatu elementua existitzen dela orri honetan, bestela errorea ematen du
     login_botoia.addEventListener("click", saioanSartu);
