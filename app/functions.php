@@ -17,6 +17,8 @@ function pasahitzaEgokiaDa() {
             // Pasahitza egokia dela egiaztatu
             if ($pasahitza == $gordetakoPasahitza) {
                 // Pasahitza egokia da
+                session_start();
+		$_SESSION['erabiltzailea'] = $erabiltzailea; //Sesioa hasi, beste orrietan erabiltzailea lortzeko
                 return true;
             }
             else {
