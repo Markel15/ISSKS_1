@@ -15,16 +15,16 @@
            	<h1 id="izenburua">Izena eman</h1>
         	</div>
 	</header>
-	<div id="div_nagusia">
+	<div id="div_sign">
 		<form method="post" action="sign.php" id="formularioa" class="login_formularioa">
 			<div class="div_formularioa">
                 		<h2>Datuak bete</h2>
             		</div>
             		<div class="div_formularioa">
-                		<input type="text" class="borde_ez" id="Izena" name="Izena" placeholder="Izena" pattern ="[A-Za-z]+" required title="Textua bakarrik onartzen da">
+                		<input type="text" class="borde_ez" id="Izena" name="Izena" placeholder="Izena" pattern ="[A-Za-záéíóúÁÉÍÓÚ]+" required title="Textua bakarrik onartzen da">
             		</div>
             		<div class="div_formularioa">
-                		<input type="text" class="borde_ez" id="Abizenak" name="Abizenak" placeholder="Abizenak" pattern ="[A-Za-z]+" required title="Textua bakarrik onartzen da">
+                		<input type="text" class="borde_ez" id="Abizenak" name="Abizenak" placeholder="Abizenak" pattern ="[A-Za-záéíóúñÁÉÍÓÚÑ]+" required title="Textua bakarrik onartzen da">
             		</div>
             		<div class="div_formularioa">
                 		<input type="text" class="borde_ez" id="NAN" name="NAN" placeholder="NAN" pattern="^[0-9]{8}-[A-Z]$" required title="formatua: 11111111-Z">
@@ -42,17 +42,10 @@
                 		<input type="password" class="borde_ez" id="pasahitza" name="pasahitza" placeholder="Pasahitza" required>
             		</div>
             		<div class="div_formularioa">
-                		<button type="button" id="iz_em_bot" onclick="bidali()">Eman izena</button>
+                		<button type="submit" id="iz_em_bot">Eman izena</button>
              		</div>
 		</form>
-		<script>
-			function bidali(){
-				var formulario = document.getElementById("formularioa");
-				formulario.submit();
-			}
-		</script>
 	</div>
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="js/script.js"></script>
 </body>
 
