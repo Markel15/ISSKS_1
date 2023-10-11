@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: db
--- Tiempo de generación: 07-10-2023 a las 22:26:09
+-- Tiempo de generación: 11-10-2023 a las 15:55:36
 -- Versión del servidor: 10.8.2-MariaDB-1:10.8.2+maria~focal
 -- Versión de PHP: 8.2.8
 
@@ -42,7 +42,7 @@ CREATE TABLE `ERABILTZAILEA` (
 --
 
 INSERT INTO `ERABILTZAILEA` (`Izena`, `Pasahitza`, `Abizenak`, `NAN`, `Telefonoa`, `Jaiotzedata`, `email`) VALUES
-('ANDER', 'ANDER', 'Abizena1', '11111111-V', '123456789', '1960-12-12', 'email@gmail.com'),
+('ANDER', 'ANDER', 'pruébáñÑ', '11111111-V', '123456789', '1960-12-12', 'email@gmail.com'),
 ('Juan', 'prueba3', 'Perez', '22222222-N', '123456788', '1980-10-02', 'juan@gmail.com');
 
 -- --------------------------------------------------------
