@@ -51,6 +51,26 @@ html, body {
     padding: 2% 2% 2% 2%;
 }
 
+#div_sign {
+    height: 87%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#div_sign form{
+    background-color: var(--color2);
+    height: 75%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 0 2px var(--color3);
+    padding: 2% 2% 2% 2%;
+}
+
 .div_formularioa {
     height: 30%;
     width: 100%;
@@ -63,7 +83,7 @@ html, body {
 .div_formularioa input, #login_botoia {
     padding: 0;
     width: 80%;
-    height: 50%;
+    height: 60%;
     box-shadow: 0 0 2px var(--color3);
     font-size: 16px;
 }
@@ -78,7 +98,7 @@ html, body {
 .div_formularioa #signup_botoia, #iz_em_bot{
     padding: 0;
     width: 80%;
-    height: 50%;
+    height: 60%;
     box-shadow: 0 0 2px var(--color3);
     font-size: 16px;
 }
