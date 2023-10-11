@@ -13,7 +13,12 @@
 	$pasahitza = $_POST['pasahitza'];
 	$sql = "INSERT INTO ERABILTZAILEA VALUES('$izena','$pasahitza', '$abizenak','$NAN','$telefonoa','$jaiodata','$email')";
 	if(mysqli_query($konexioa,$sql)){
-		echo "Datuak ondo gorde dira.";
+		//header('Location: main.php');
+		echo '<script>';
+		echo 'if(confirm("Izena eman duzu era egokian, orain hasierako orrira joan nahi duzu?")){';
+		echo 'window.location.href = "main.php";';
+		echo '}';
+		echo '</script>';
 	}
 	else{
 		echo "Errorea SQL-aren exekuzioan: " . mysqli_error($konexioa);
