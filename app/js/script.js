@@ -89,15 +89,20 @@ function izenaEman(){
 }
 function nanKonprobatu(){
     var nan = document.getElementById("NAN").value.toString();
-    var zenb = nan.substring(0,8);
-    var hizkia = nan.substring(9,10);
-    var kode = "TRWAGMYFPDXBNJZSQVHLCKE";
-    var emaitza = kode.charAt((zenb % 23)-1);
-    if(emaitza != hizkia){
+    if(nan.trim() === ""){//Konprobatu NAN hutsik ez dagoela
         return false;
     }
     else{
-        return true;
+	var zenb = nan.substring(0,8);
+	var hizkia = nan.substring(9,10);
+	var kode = "TRWAGMYFPDXBNJZSQVHLCKE";
+	var emaitza = kode.charAt((zenb % 23)-1);
+	if(emaitza != hizkia){
+	    return false;
+	}
+	else{
+	    return true;
+	}
     }
 }
 
