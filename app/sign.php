@@ -15,10 +15,9 @@
 	if(mysqli_query($konexioa,$sql)){
 		//header('Location: main.php');
 		echo '<script>';
-		echo 'if(confirm("Izena eman duzu era egokian, orain hasierako orrira joan nahi duzu?")){';
-		echo 'window.location.href = "main.php";';
-		echo '}';
+		echo 'alert("Izena eman duzu era egokian, orain hasierako orrira bueltatuko zara")';
 		echo '</script>';
+		echo '<script>window.location.href = "main.php";</script>; ';
 	}
 	else{
 		echo "Errorea SQL-aren exekuzioan: " . mysqli_error($konexioa);
