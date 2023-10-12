@@ -21,6 +21,7 @@
             <h1 id="izenburua">San Mamés Liburutegia</h1>
         </div>
     </header>
+    <button id="datuak_aldatu">Datuak aldatu</button>
     <div id="div_nagusia">
         <div id="div_edukia">
             <?php
