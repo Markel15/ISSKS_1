@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: db
--- Tiempo de generación: 27-09-2023 a las 20:30:42
+-- Tiempo de generación: 11-10-2023 a las 15:55:36
 -- Versión del servidor: 10.8.2-MariaDB-1:10.8.2+maria~focal
 -- Versión de PHP: 8.2.8
 
@@ -27,24 +27,23 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `ERABILTZAILEA`
 --
 
-CREATE TABLE ERABILTZAILEA (
-  Izena varchar(20) NOT NULL,
-  Pasahitza varchar(20) NOT NULL,
-  Abizenak varchar(25) NOT NULL,
-  NAN varchar(20) NOT NULL,
-  Telefonoa varchar(15) NOT NULL,
-  `Jaiotze-data` varchar(20) NOT NULL,
-  email varchar(25) NOT NULL,
-  PRIMARY KEY (NAN)
+CREATE TABLE `ERABILTZAILEA` (
+  `Izena` varchar(20) NOT NULL,
+  `Pasahitza` varchar(20) NOT NULL,
+  `Abizenak` varchar(25) NOT NULL,
+  `NAN` varchar(20) NOT NULL,
+  `Telefonoa` varchar(15) NOT NULL,
+  `Jaiotzedata` varchar(20) NOT NULL,
+  `email` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `ERABILTZAILEA`
 --
 
-INSERT INTO ERABILTZAILEA (Izena, Pasahitza, Abizenak, NAN, Telefonoa, `Jaiotze-data`, email) VALUES
-('ANDER', 'ANDER', 'Abizena1', '11111111-V', '123456789', '1960-12-12', 'email@gmail.com'),
-('Juan', 'jaldjsa', 'Perez', '22222222-J', '123456788', '1980-10-02', 'juan@gmail.com');
+INSERT INTO `ERABILTZAILEA` (`Izena`, `Pasahitza`, `Abizenak`, `NAN`, `Telefonoa`, `Jaiotzedata`, `email`) VALUES
+('ANDER', 'ANDER', 'pruébáñÑ', '11111111-V', '123456789', '1960-12-12', 'email@gmail.com'),
+('Juan', 'prueba3', 'Perez', '22222222-N', '123456788', '1980-10-02', 'juan@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -62,7 +61,7 @@ CREATE TABLE LIBURUA (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Índices para tablas volcadas
+-- Volcado de datos para la tabla `LIBURUA`
 --
 
 INSERT INTO LIBURUA VALUES
@@ -74,11 +73,17 @@ INSERT INTO LIBURUA VALUES
 INSERT INTO LIBURUA VALUES
 ('El Código Da Vinci', 'Dan Brown', 'Misterioa', 18.50, '978-0307474278');
 
-
+--
+-- Índices para tablas volcadas
+--
 
 --
 -- Indices de la tabla `ERABILTZAILEA`
 --
+ALTER TABLE `ERABILTZAILEA`
+  ADD PRIMARY KEY (`NAN`),
+  ADD UNIQUE KEY `Izena` (`Izena`);
+
 
 COMMIT;
 
