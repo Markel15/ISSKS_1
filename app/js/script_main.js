@@ -1,6 +1,6 @@
 function gehiagoErakutsi(){
     current_taula = this.nextElementSibling;
-    console.log(current_taula);
+    // console.log(current_taula);
     if (current_taula.style.display === "none"){
         current_taula.style.display = "table";
     }
@@ -13,6 +13,24 @@ function liburuaGehitu(){
     div_modal.style.display = "flex";
     div_modal_sub.style.display = "flex";
     div_opaku.style.display = "block";
+    document.getElementById("h2_izenburua").innerHTML = "Liburua gehitu";
+    document.getElementById("hidden_akzioa").value = "gehitu";
+}
+
+function liburuaEditatuLeihoa(izenburua, egilea, generoa, prezioa, isbn){
+    div_modal.style.display = "flex";
+    div_modal_sub.style.display = "flex";
+    div_opaku.style.display = "block";
+    document.getElementById("h2_izenburua").innerHTML = "Liburua editatu";
+    document.getElementById("hidden_akzioa").value = "editatu";
+    document.getElementById("input_isbnAurrekoa").value = isbn;
+    document.getElementById("input_izenburua").value = izenburua;
+    document.getElementById("input_egilea").value = egilea;
+    document.getElementById("input_generoa").value = generoa;
+    document.getElementById("input_prezioa").value = prezioa;
+    document.getElementById("input_isbn").value = isbn;
+    console.log(isbn);
+
 }
 
 function itxiLeihoa(){
@@ -21,15 +39,16 @@ function itxiLeihoa(){
     div_opaku.style.display = "none";
 }
 
-function validarFormulario() {
+
+function formularioaBalioztatu() {
     // Lortu formularioko eremuetako balioak
     var titulua = document.getElementById("input_izenburua").value;
     var autorea = document.getElementById("input_egilea").value;
     var generoa = document.getElementById("input_generoa").value;
     var prezioa = parseFloat(document.getElementById("input_prezioa").value);
     var isbn = document.getElementById("input_isbn").value;
-    console.log(document.getElementById("izenburua"));
-    console.log(titulua);
+    // console.log(document.getElementById("izenburua"));
+    // console.log(titulua);
 
     // Balidazioak egiten ditu
     if (!titulua || !autorea || !generoa || !prezioa || !isbn) {
@@ -63,6 +82,30 @@ function validarFormulario() {
     }
     // Balidazio guztiak pasatzen badira, formularioa bidali egingo da
     return true;
+}
+
+function liburuaEzabatu(isbn){
+    var xhr = new XMLHttpRequest();
+    
+    // URL del servidor PHP que maneja la eliminación
+    var url = `/functions_main.php?isbn=${isbn}`;
+
+    xhr.open('DELETE', url, true);
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // Éxito, el libro se eliminó correctamente
+                console.log(`El libro con ISBN ${isbn} se ha eliminado.`);
+                window.location.reload(true);
+            } else {
+                // Manejar errores si es necesario
+                console.error('Error al eliminar el libro.');
+            }
+        }
+    };
+
+    xhr.send();
 }
 
 var current_taula = null;
