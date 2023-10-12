@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: db
--- Tiempo de generación: 11-10-2023 a las 15:55:36
+-- Tiempo de generación: 27-09-2023 a las 20:30:42
 -- Versión del servidor: 10.8.2-MariaDB-1:10.8.2+maria~focal
 -- Versión de PHP: 8.2.8
 
@@ -27,23 +27,24 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `ERABILTZAILEA`
 --
 
-CREATE TABLE `ERABILTZAILEA` (
-  `Izena` varchar(20) NOT NULL,
-  `Pasahitza` varchar(20) NOT NULL,
-  `Abizenak` varchar(25) NOT NULL,
-  `NAN` varchar(20) NOT NULL,
-  `Telefonoa` varchar(15) NOT NULL,
-  `Jaiotzedata` varchar(20) NOT NULL,
-  `email` varchar(25) NOT NULL
+CREATE TABLE ERABILTZAILEA (
+  Izena varchar(20) NOT NULL,
+  Pasahitza varchar(20) NOT NULL,
+  Abizenak varchar(25) NOT NULL,
+  NAN varchar(20) NOT NULL,
+  Telefonoa varchar(15) NOT NULL,
+  `Jaiotze-data` varchar(20) NOT NULL,
+  email varchar(25) NOT NULL,
+  PRIMARY KEY (NAN)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `ERABILTZAILEA`
 --
 
-INSERT INTO `ERABILTZAILEA` (`Izena`, `Pasahitza`, `Abizenak`, `NAN`, `Telefonoa`, `Jaiotzedata`, `email`) VALUES
-('ANDER', 'ANDER', 'pruébáñÑ', '11111111-V', '123456789', '1960-12-12', 'email@gmail.com'),
-('Juan', 'prueba3', 'Perez', '22222222-N', '123456788', '1980-10-02', 'juan@gmail.com');
+INSERT INTO ERABILTZAILEA (Izena, Pasahitza, Abizenak, NAN, Telefonoa, `Jaiotze-data`, email) VALUES
+('ANDER', 'ANDER', 'Abizena1', '11111111-V', '123456789', '1960-12-12', 'email@gmail.com'),
+('Juan', 'jaldjsa', 'Perez', '22222222-J', '123456788', '1980-10-02', 'juan@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -51,37 +52,34 @@ INSERT INTO `ERABILTZAILEA` (`Izena`, `Pasahitza`, `Abizenak`, `NAN`, `Telefonoa
 -- Estructura de tabla para la tabla `LIBURUA`
 --
 
-CREATE TABLE `LIBURUA` (
-  `Titulua` varchar(20) NOT NULL,
-  `Autorea` varchar(20) NOT NULL,
-  `Generoa` varchar(20) NOT NULL,
-  `Prezioa` float NOT NULL,
-  `ISBN` int(15) NOT NULL
+CREATE TABLE LIBURUA (
+  Titulua varchar(30) NOT NULL,
+  Autorea varchar(20) NOT NULL,
+  Generoa varchar(20) NOT NULL,
+  Prezioa float NOT NULL,
+  ISBN varchar(17) NOT NULL,
+  PRIMARY KEY (ISBN)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `LIBURUA`
---
-
-INSERT INTO `LIBURUA` (`Titulua`, `Autorea`, `Generoa`, `Prezioa`, `ISBN`) VALUES
-('Liburua1', 'Egilea1', 'Misterioa', 30, 123456781);
 
 --
 -- Índices para tablas volcadas
 --
 
+INSERT INTO LIBURUA VALUES
+('The Lord of the Rings', 'J.R.R. Tolkien', 'Fantasia', 30.05, '978-980-14-2517-5');
+INSERT INTO LIBURUA VALUES
+('Harry Potter', 'J.K. Rolling', 'Fantasia', 22.05, '978-980-14-3318-5');
+INSERT INTO LIBURUA VALUES
+('Dune', 'Frank Herbert', 'Zientzia-fikzioa', 25.99, '978-0450011849');
+INSERT INTO LIBURUA VALUES
+('El Código Da Vinci', 'Dan Brown', 'Misterioa', 18.50, '978-0307474278');
+
+
+
 --
 -- Indices de la tabla `ERABILTZAILEA`
 --
-ALTER TABLE `ERABILTZAILEA`
-  ADD PRIMARY KEY (`NAN`),
-  ADD UNIQUE KEY `Izena` (`Izena`);
 
---
--- Indices de la tabla `LIBURUA`
---
-ALTER TABLE `LIBURUA`
-  ADD PRIMARY KEY (`ISBN`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
