@@ -52,32 +52,32 @@ function formularioaBalioztatu() {
 
     // Balidazioak egiten ditu
     if (!titulua || !autorea || !generoa || !prezioa || !isbn) {
-        alert("Algunos campos no se encuentran definidos o no tienen valor.");
+        alert("Zenbait eremu ez dute baliorik.");
         return false;
     }
 
     if (titulua.length > 30) {
-        alert("El campo 'Titulua' debe tener como máximo 30 caracteres.");
+        alert("'Titulua' eremuak gehienez 30 karaktere izan behar ditu");
         return false;
     }
 
     if (autorea.length > 20) {
-        alert("El campo 'Autorea' debe tener como máximo 20 caracteres.");
+        alert("'Autorea' eremuak gehienez 20 karaktere izan behar ditu");
         return false;
     }
 
     if (generoa.length > 20) {
-        alert("El campo 'Generoa' debe tener como máximo 20 caracteres.");
+        alert("'Generoa' eremuak gehienez 20 karaktere izan behar ditu");
         return false;
     }
 
     if (isNaN(prezioa) || prezioa <= 0) {
-        alert("El campo 'Prezioa' debe ser un número mayor que cero.");
+        alert("'Prezioa' eremua 0 baino handiagoa izan behar da");
         return false;
     }
 
     if (isbn.length > 17) {
-        alert("El campo 'ISBN' debe tener como máximo 17 caracteres.");
+        alert("'ISBN' eremuak 17 karaktere izan behar ditu gehienez");
         return false;
     }
     // Balidazio guztiak pasatzen badira, formularioa bidali egingo da
@@ -85,27 +85,33 @@ function formularioaBalioztatu() {
 }
 
 function liburuaEzabatu(isbn){
-    var xhr = new XMLHttpRequest();
+    if(confirm("Ziur zaude liburua ezabatu nahi duzula")){
+    	var xhr = new XMLHttpRequest();
     
-    // URL del servidor PHP que maneja la eliminación
-    var url = `/functions_main.php?isbn=${isbn}`;
+    	// URL del servidor PHP que maneja la eliminación
+    	var url = `/functions_main.php?isbn=${isbn}`;
 
-    xhr.open('DELETE', url, true);
+    	xhr.open('DELETE', url, true);
 
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                // Éxito, el libro se eliminó correctamente
-                console.log(`El libro con ISBN ${isbn} se ha eliminado.`);
-                window.location.reload(true);
-            } else {
-                // Manejar errores si es necesario
-                console.error('Error al eliminar el libro.');
+    	xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+            	if (xhr.status === 200) {
+            	    // Éxito, el libro se eliminó correctamente
+            	    console.log(`El libro con ISBN ${isbn} se ha eliminado.`);
+            	    window.location.reload(true);
+            	} else {
+            	    // Manejar errores si es necesario
+            	    console.error('Error al eliminar el libro.');
+            	}
             }
-        }
-    };
+    	};
 
-    xhr.send();
+    	xhr.send();
+    }
+}
+function aldatuOrrira(){
+	event.preventDefault();
+	window.location.href = "index.html";
 }
 
 var current_taula = null;
@@ -121,3 +127,7 @@ const div_modal_sub = document.getElementById("div_modal_sub");
 const modal_itxi = document.getElementById("modal_itxi");
 modal_itxi.addEventListener("click", itxiLeihoa);
 const div_opaku = document.getElementById("div_opaku");
+var aldatu_botoia = document.getElementById("datuak_aldatu");
+if (aldatu_botoia) {
+    aldatu_botoia.addEventListener("click", aldatuOrrira);
+}
