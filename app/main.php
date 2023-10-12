@@ -52,8 +52,9 @@
                     echo "<td>" . $row["Generoa"] . "</td>";
                     echo "<td>" . $row["Prezioa"] . "</td>";
                     echo "<td>" . $row["ISBN"] . "</td>";
-                    echo "<td>Editatu</td>";
-                    echo "<td>Ezabatu</td>";
+                    echo "<td onclick='liburuaEditatuLeihoa(\"" . $row["Titulua"] . "\",\"" . $row["Autorea"] . "\",\"" . $row["Generoa"] . "\"," . $row["Prezioa"] . ",\"" . $row["ISBN"] . "\")'>Editatu</td>";
+                    echo "<td onclick='liburuaEzabatu(\"" . $row["ISBN"] . "\")'>Ezabatu</td>";
+                    // ISBNren balioa kate bat da (string), komatxo sinpleetan biltzen duzula ziurtatu behar da ^^
                     echo "</tr>";
                     echo "</table>";
                 }
@@ -68,7 +69,7 @@
             <div id="div_modal_itxi">
                 <span id="modal_itxi">&times;</span>
             </div>
-            <h2>Liburua gehitu</h2>
+            <h2 id="h2_izenburua">Liburua gehitu</h2>
             <form action="functions_main.php" method="post">
                 <label for="izenburua">Izenburua:</label>
                 <input type="text" id="input_izenburua" name="izenburua">
@@ -93,7 +94,10 @@
                 <label for="isbn">ISBN:</label>
                 <input type="text" id="input_isbn" name="isbn">
 
-                <button type="submit" onclick="return validarFormulario()">Bidali</button>
+                <input type="hidden" id="input_isbnAurrekoa" name="isbnAurrekoa" value="">
+
+                <input type="hidden" id="hidden_akzioa" name="akzioa" value="gehitu">
+                <button type="submit" onclick="return formularioaBalioztatu()">Bidali</button>
             </form>
         </div>
         <div id="div_opaku"></div>
