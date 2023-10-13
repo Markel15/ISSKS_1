@@ -1,0 +1,149 @@
+:root {
+    --color1: #749BC2;
+    --color2: #F6F4EB;
+    --color3: rgba(28, 28, 28, 0.413);
+    --color4: #91C8E4;
+    --color5: #FFFF00;
+    --color6: #FF0000;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#div_goiburua{
+    background-color: var(--color1);
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#div_goiburua #izenburua {
+    margin: 0;
+} 
+
+#div_nagusia {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#div_nagusia form{
+    background-color: var(--color2);
+    height: 60%;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 0 2px var(--color3);
+    padding: 2% 2% 2% 2%;
+}
+
+#div_sign {
+    height: 87%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#div_sign form{
+    background-color: var(--color2);
+    height: 75%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 0 2px var(--color3);
+    padding: 2% 2% 2% 2%;
+}
+
+.div_formularioa {
+    height: 30%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.div_formularioa input, #login_botoia {
+    padding: 0;
+    width: 80%;
+    height: 60%;
+    box-shadow: 0 0 2px var(--color3);
+    font-size: 16px;
+}
+
+.div_formularioa input{
+    margin: 1%;
+    height: calc(50% - 20px);;
+    width: calc(80% - 20px);
+    padding: 10px;
+}
+
+.div_formularioa #signup_botoia, #iz_em_bot{
+    padding: 0;
+    width: 80%;
+    height: 60%;
+    box-shadow: 0 0 2px var(--color3);
+    font-size: 16px;
+}
+
+#login_botoia{
+    background-color: var(--color4);
+    border: none;
+}
+
+#login_botoia:hover{
+    background-color: var(--color1);
+    border: none;
+}
+
+#signup_botoia{
+    background-color: var(--color5);
+    border: none;
+}
+
+#signup_botoia:hover{
+    background-color: var(--color5);
+    text-decoration: underline; 
+    border: none;
+}
+
+#iz_em_bot{
+    background-color: var(--color5);
+    border: none;
+}
+
+#iz_em_bot:hover{
+    background-color: var(--color5);
+    text-decoration: underline; 
+    border: none;
+}
+
+.div_formularioa input:focus {
+    outline: none;
+    border: 1px solid var(--color1);
+}
+
+.borde_gorria {
+    border: 1px solid var(--color6);
+}
+
+.borde_ez {
+    border: none;
+}
