@@ -9,7 +9,7 @@ Web sistema honetan, erregistratu, izena eman eta zure datu pertsonalak alda dit
 - Iker Mujika
 - Aitor Benito
 - Irune Palacios
-- Miriam ?
+- Miriam Bergaz
 
 ## Docker-rentzako Jarraibideak
 
