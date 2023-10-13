@@ -111,7 +111,7 @@ function liburuaEzabatu(isbn){
 }
 function aldatuOrrira(){
 	event.preventDefault();
-	window.location.href = "index.html";
+	window.location.href = "login.html";
 }
 
 var current_taula = null;
