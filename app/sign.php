@@ -13,11 +13,11 @@
 	$pasahitza = $_POST['pasahitza'];
 	$sql = "INSERT INTO ERABILTZAILEA VALUES('$izena','$pasahitza', '$abizenak','$NAN','$telefonoa','$jaiodata','$email')";
 	if(mysqli_query($konexioa,$sql)){
-		//header('Location: main.php');
+		//header('Location: index.php');
 		echo '<script>';
 		echo 'alert("Izena eman duzu era egokian, orain hasierako orrira bueltatuko zara")';
 		echo '</script>';
-		echo '<script>window.location.href = "main.php";</script>; ';
+		echo '<script>window.location.href = "index.php";</script>; ';
 	}
 	else{
 		echo "Errorea SQL-aren exekuzioan: " . mysqli_error($konexioa);
