@@ -11,7 +11,7 @@ function datuakSartu($titulua, $autorea, $generoa, $prezioa, $isbn, $konexioa) {
             VALUES ('$titulua', '$autorea', '$generoa', $prezioa, '$isbn')";
 
     if ($konexioa->query($sql) === TRUE) {
-        header("Location: main.php");
+        header("Location: index.php");
         exit();
     } else {
         echo "Errorea datuak gordetzean: " . $konexioa->error;
@@ -24,7 +24,7 @@ function datuakAldatu($titulua, $autorea, $generoa, $prezioa, $isbn, $isbnAurrek
             WHERE ISBN = '$isbnAurrekoa'";
 
     if ($konexioa->query($sql) === TRUE) {
-        header("Location: main.php");
+        header("Location: index.php");
         exit();
     } else {
         echo "Errorea datuak gordetzean: " . $konexioa->error;
@@ -37,7 +37,7 @@ function liburuaEzabatu($isbn, $konexioa){
     echo $sql;
 
     if ($konexioa->query($sql) === TRUE) {
-        header("Location: main.php");
+        header("Location: index.php");
         exit();
     } else {
         echo "Errorea datuak gordetzean: " . $konexioa->error;
