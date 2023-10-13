@@ -1,1 +1,48 @@
-test
+# San Mamés Liburutegia
+
+## Deskribapena
+Web sistema honetan, erregistratu, izena eman eta zure datu pertsonalak alda ditzakezu. Gainera, liburutegi baten moduan, liburuak gehitu, ezabatu eta editatu ahal dira.
+
+## Parte-hartzaileak
+- Markel Hernandez
+- Ander Vicario
+- Iker Mujika
+- Aitor Benito
+- Irune Palacios
+- Miriam ?
+
+## Docker-rentzako Jarraibideak
+
+### Aurrebaldintza
+Docker eta docker-compose zure sisteman aurretik instalatuta dauzkazula ziurtatu. [Docker](https://www.docker.com/get-started) instalatuta daukazula ziurtatu jarraitzeko.
+
+### Proiektua Docker bidez Hedatzeko Pausuak
+
+1. Klonatu biltegia zure makinan:
+
+   ```bash
+   git clone https://github.com/Markel15/ISSKS_1/
+   ```
+   
+2. Direktoriora joan:
+
+   ```bash
+   cd ./ISSKS_1
+   ```
+
+3. Sortu Docker web irudia Dockerfile fitxategiaren bidez:
+
+   ```bash
+   docker build -t="web" .
+   ```
+   
+4. Zerbitzuak hedatu:
+
+   ```bash
+   docker-compose up
+   ```
+
+5. Orain, zure projektua web nabigatzaile batean bisitatu dezakezu hurrengo helbidetan:
+
+   http://localhost:81 (web-sistema)
+   http://localhost:8890 (phpmyadmin)
