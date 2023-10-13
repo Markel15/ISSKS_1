@@ -21,25 +21,25 @@ Docker eta docker-compose zure sisteman aurretik instalatuta dauzkazula ziurtatu
 1. Klonatu biltegia zure makinan:
 
    ```bash
-   git clone https://github.com/Markel15/ISSKS_1/
+   $ git clone https://github.com/Markel15/ISSKS_1/
    ```
    
 2. Direktoriora joan:
 
    ```bash
-   cd ./ISSKS_1
+   $ cd ./ISSKS_1
    ```
 
 3. Sortu Docker web irudia Dockerfile fitxategiaren bidez:
 
    ```bash
-   docker build -t="web" .
+   $ docker build -t="web" .
    ```
    
 4. Zerbitzuak hedatu:
 
    ```bash
-   docker-compose up
+   $ docker-compose up
    ```
 
 5. Orain, zure projektua web nabigatzaile batean bisitatu dezakezu hurrengo helbidetan:
