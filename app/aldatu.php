@@ -29,10 +29,10 @@
     	$sql2 = "UPDATE ERABILTZAILEA SET Izena='$izena',Pasahitza='$pasahitza',Abizenak='$abizenak',NAN='$NAN',Telefonoa='$telefonoa',Jaiotzedata='$jaiodata',email='$email' WHERE NAN='$NAN'";
     	$result2=mysqli_query($konexioa,$sql2);
     	if($result2){
-    		//header('Location: main.php');
+    		//header('Location: index.php');
     		echo '<script>';
 		echo 'if(confirm("Informazioa gorde da era egokian. Hasierako orrira joan nahi duzu?")){';
-		echo 'window.location.href = "main.php";';
+		echo 'window.location.href = "index.php";';
 		echo '}';
 		echo '</script>';
     	}
