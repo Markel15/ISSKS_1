@@ -43,7 +43,7 @@ Docker eta docker-compose zure sisteman aurretik instalatuta dauzkazula ziurtatu
    $ docker-compose up
    ```
 
-5. Orain, zure projektua web nabigatzaile batean bisitatu dezakezu hurrengo helbidetan:
+5. Orain, zure proiektua web nabigatzaile batean bisitatu dezakezu hurrengo helbidetan:
 
    http://localhost:81 (web-sistema)
    http://localhost:8890 (phpmyadmin)
