@@ -21,7 +21,7 @@ Docker eta docker-compose zure sisteman aurretik instalatuta dauzkazula ziurtatu
 1. Klonatu biltegia zure makinan:
 
    ```bash
-   $ git clone https://github.com/Markel15/ISSKS_1/
+   $ git clone https://github.com/Markel15/ISSKS_1.git
    ```
    
 2. Direktoriora joan eta "entrega_1" branch-a aukeratu:
