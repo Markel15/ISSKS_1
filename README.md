@@ -24,10 +24,11 @@ Docker eta docker-compose zure sisteman aurretik instalatuta dauzkazula ziurtatu
    $ git clone https://github.com/Markel15/ISSKS_1/
    ```
    
-2. Direktoriora joan:
+2. Direktoriora joan eta "entrega_1" branch-a aukeratu:
 
    ```bash
    $ cd ./ISSKS_1
+   $ git checkout entrega_1
    ```
 
 3. Sortu Docker web irudia Dockerfile fitxategiaren bidez:
