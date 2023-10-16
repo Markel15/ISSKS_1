@@ -96,7 +96,7 @@ function nanKonprobatu(){
 	var zenb = nan.substring(0,8);
 	var hizkia = nan.substring(9,10);
 	var kode = "TRWAGMYFPDXBNJZSQVHLCKE";
-	var emaitza = kode.charAt((zenb % 23)-1);
+	var emaitza = kode.charAt(zenb % 23);
 	if(emaitza != hizkia){
 	    return false;
 	}
