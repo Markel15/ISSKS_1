@@ -43,7 +43,7 @@ CREATE TABLE `ERABILTZAILEA` (
 
 INSERT INTO `ERABILTZAILEA` (`Izena`, `Pasahitza`, `Abizenak`, `NAN`, `Telefonoa`, `Jaiotzedata`, `email`) VALUES
 ('ANDER', 'ANDER', 'pruébáñÑ', '11111111-H', '123456789', '1960-12-12', 'email@gmail.com'),
-('Juan', 'prueba3', 'Perez', '22222222-N', '123456788', '1980-10-02', 'juan@gmail.com');
+('Juan', 'prueba3', 'Perez', '22222222-J', '123456788', '1980-10-02', 'juan@gmail.com');
 
 -- --------------------------------------------------------
 
