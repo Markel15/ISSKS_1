@@ -5,6 +5,8 @@
     --color4: #91C8E4;
     --color5: #FFFF00;
     --color6: #FF0000;
+    --color7: #800080;
+    --color8: #540154;
 }
 
 * {
@@ -208,4 +210,19 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+#datuak_aldatu {
+    background-color: var(--color7);
+    border: none;
+    position:absolute;
+    top:120px;
+    right:10px;
+    border-radius: 7px;
+}	
+
+#datuak_aldatu:hover{
+    background-color: var(--color8);
+    text-decoration: underline; 
+    border: none;
 }
