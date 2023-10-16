@@ -66,7 +66,7 @@
                 		<input type="text" class="borde_ez" id="Izena" name="Izena" placeholder="Izena" pattern ="[A-Za-záéíóúñÁÉÍÓÚÑ]+" required title="Textua bakarrik onartzen da" value="<?php echo $erab ?>">
             		</div>
             		<div class="div_formularioa">
-                		<input type="text" class="borde_ez" id="Abizenak" name="Abizenak" placeholder="Abizenak" pattern ="[A-Za-záéíóúñÁÉÍÓÚÑ]+" required title="Textua bakarrik onartzen da" value="<?php echo $abizenak ?>">
+                		<input type="text" class="borde_ez" id="Abizenak" name="Abizenak" placeholder="Abizena" pattern ="[A-Za-záéíóúñÁÉÍÓÚÑ]+" required title="Textua bakarrik onartzen da" value="<?php echo $abizenak ?>">
             		</div>
             		<div class="div_formularioa">
                 		<input type="text" class="borde_ez" id="NAN" name="NAN" placeholder="NAN" pattern="^[0-9]{8}-[A-Z]$" required title="formatua: 11111111-Z" value="<?php echo $NAN ?>" readonly> <!-- Ezin da aldatu gakoa (readonly) -->
