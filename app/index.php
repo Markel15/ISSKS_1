@@ -23,6 +23,7 @@
     </header>
     <button id="datuak_aldatu">Datuak aldatu / Izena eman</button>
     <div id="div_nagusia">
+        <h3>Xehetasunak ikusteko, kutxa batean klikatu:</h3>
         <div id="div_edukia">
             <?php
                 $sql = "SELECT * FROM LIBURUA";
