@@ -35,7 +35,7 @@
     	$stmt = $mysqli->prepare($sql2);
     	$stmt->bind_param('ssssssss',$izena,$pasahitza,$abizenak,$NAN,$telefonoa,$jaiodata,$email,$NAN);
     	$stmt->execute();
-    	if($stmt->affected_rows===1){
+    	if(mysqli_stmt_errno($stmt)===0){// 0 ez bada, errore bat gertatu da.
     		//header('Location: index.php');
     		$stmt->close();
     		echo '<script>';
