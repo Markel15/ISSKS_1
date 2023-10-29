@@ -34,7 +34,7 @@ function datuakAldatu($titulua, $autorea, $generoa, $prezioa, $isbn, $isbnAurrek
     $stmt =$mysqli->prepare($sql);
     $stmt->bind_param('sssdss',$titulua, $autorea, $generoa, $prezioa, $isbn,$isbnAurrekoa);
     $stmt->execute();
-    if ($stmt->affected_rows===1) {
+    if (mysqli_stmt_errno($stmt)===0){// 0 ez bada, errore bat gertatu da.
     	$stmt->close();
         header("Location: index.php");
         exit();
