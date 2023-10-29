@@ -2,14 +2,19 @@
 
     include 'config.php';
     $konexioa = konektatuDatuBasera();
+    $mysqli = sortuMysqli();
     //Datuak lortu
     session_start();
     $erab = $_SESSION['erabiltzailea'];//erabiltzailearen balioa lortu
-    $sql="SELECT * FROM ERABILTZAILEA WHERE Izena='$erab'";
-    $result=mysqli_query($konexioa,$sql);
+    $sql="SELECT * FROM ERABILTZAILEA WHERE Izena=?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("s", $erab);
+    $stmt->execute();
+    $result=$stmt->get_result();
     if(!$result){
-    	die('Kontsulta exekutatzean errorea: ' . mysqli_error($konexioa));
+    	die('Kontsulta exekutatzean errorea');
     }
+    $stmt->close();
     $row=mysqli_fetch_assoc($result);
     $abizenak=$row['Abizenak'];
     $NAN=$row['NAN'];
@@ -26,10 +31,13 @@
     	$jaiodata=$_POST['JaioData'];
     	$email=$_POST['Email'];
     	$pasahitza=$_POST['pasahitza'];
-    	$sql2 = "UPDATE ERABILTZAILEA SET Izena='$izena',Pasahitza='$pasahitza',Abizenak='$abizenak',NAN='$NAN',Telefonoa='$telefonoa',Jaiotzedata='$jaiodata',email='$email' WHERE NAN='$NAN'";
-    	$result2=mysqli_query($konexioa,$sql2);
-    	if($result2){
+    	$sql2 = "UPDATE ERABILTZAILEA SET Izena=?,Pasahitza=?,Abizenak=?,NAN=?,Telefonoa=?,Jaiotzedata=?,email=? WHERE NAN=?";
+    	$stmt = $mysqli->prepare($sql2);
+    	$stmt->bind_param('ssssssss',$izena,$pasahitza,$abizenak,$NAN,$telefonoa,$jaiodata,$email,$NAN);
+    	$stmt->execute();
+    	if($stmt->affected_rows===1){
     		//header('Location: index.php');
+    		$stmt->close();
     		echo '<script>';
 		echo 'if(confirm("Informazioa gorde da era egokian. Hasierako orrira joan nahi duzu?")){';
 		echo 'window.location.href = "index.php";';
@@ -37,7 +45,7 @@
 		echo '</script>';
     	}
     	else{
-    		die(" MYSQL errorea: " + mysqli_error($konexioa));
+    		die(" MYSQL errorea");
     	} 
     }
     mysqli_close($konexioa);

@@ -11,8 +11,18 @@ function konektatuDatuBasera() {
 
     // Konekzioa egiaztatu    
     if (!$konekzioa) {
-        die("Datu-basearekin konekzioan errorea: " . mysqli_connect_error());
+        die("Datu-basearekin konexioan errorea: " . mysqli_connect_error());
     }
     return $konekzioa;
+}
+function sortuMysqli(){
+    
+    //mysqli objektua sortu
+    $mysqli = new mysqli('db', 'admin', 'test', 'database');
+    //Konprobatu konexioa
+    if($mysqli->connect_error) {
+    	die("Konexioan errorea : " . $mysqli->connect_error);
+    }
+    return $mysqli;
 }
 ?>
