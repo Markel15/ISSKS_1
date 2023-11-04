@@ -28,7 +28,7 @@ Docker eta docker-compose zure sisteman aurretik instalatuta dauzkazula ziurtatu
 
    ```bash
    $ cd ./ISSKS_1
-   $ git checkout entrega_1
+   $ git checkout entrega_2
    ```
 
 3. Sortu Docker web irudia Dockerfile fitxategiaren bidez:
@@ -36,14 +36,19 @@ Docker eta docker-compose zure sisteman aurretik instalatuta dauzkazula ziurtatu
    ```bash
    $ docker build -t="web" .
    ```
+
+   (Aurreitk sortutako irudi eta edukiontzi guztiak ezabatzeko:)
+   ```bash
+   $ docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && docker rmi $(docker images -q)
+   ```
    
-4. Zerbitzuak hedatu:
+5. Zerbitzuak hedatu:
 
    ```bash
    $ docker-compose up
    ```
 
-5. Orain, zure proiektua web nabigatzaile batean bisita dezakezu hurrengo helbidetan:
+6. Orain, zure proiektua web nabigatzaile batean bisita dezakezu hurrengo helbidetan:
 
    http://localhost:81 (web-sistema)
    http://localhost:8890 (phpmyadmin)
