@@ -18,13 +18,14 @@ function pasahitzaEgokiaDa() {
     if ($datuak) {
         if ($datuak->num_rows == 1) {
             $fila = $datuak->fetch_assoc();
-            $gordetakoPasahitza = $fila['Pasahitza'];
+            $gordetakoPasahitza = $fila['Pasahitza_hash'];
+            $gatza = $fila['Gatza'];
 
             // Pasahitza egokia dela egiaztatu
-            if ($pasahitza == $gordetakoPasahitza) {
+            if (password_verify($pasahitza . $gatza, $gordetakoPasahitza)) {
                 // Pasahitza egokia da
                 session_start();
-		$_SESSION['erabiltzailea'] = $erabiltzailea; //Sesioa hasi, beste orrietan erabiltzailea lortzeko
+		        $_SESSION['erabiltzailea'] = $erabiltzailea; //Sesioa hasi, beste orrietan erabiltzailea lortzeko
                 return true;
             }
             else {

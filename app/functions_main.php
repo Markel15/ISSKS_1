@@ -11,8 +11,7 @@ function datuakSartu($titulua, $autorea, $generoa, $prezioa, $isbn) {
     $sql = "INSERT INTO LIBURUA (Titulua, Autorea, Generoa, Prezioa, ISBN)
             VALUES (?, ?, ?, ?, ?)";
     //mysqli prepared statement-a sortu
-    $stmt = $mysqli->prepare($sql);
-    
+    $stmt = $mysqli->prepare($sql);    
     //lotu lortutako balioak ? bakoitzarekin
     $stmt->bind_param('sssds',$titulua, $autorea, $generoa, $prezioa, $isbn);//lehenengo parametroan, s datuak string motatakoak direla adierazteko eta d dezimala duten datuak.
     $stmt->execute();

@@ -25,6 +25,7 @@
     $jaiodata=$row['Jaiotzedata'];
     $email=$row['email'];
     $pasahitza=$row['Pasahitza'];
+	$gatza = $row['Gatza'];
     
     if(isset($_POST['submit'])){
     	$izena=$_POST['Izena'];
@@ -34,10 +35,12 @@
     	$jaiodata=$_POST['JaioData'];
     	$email=$_POST['Email'];
     	$pasahitza=$_POST['pasahitza'];
+		$pasahitza_konbinatua = $pasahitza . $gatza;
+		$hash = password_hash($pasahitza_konbinatua, PASSWORD_DEFAULT);
     	if($NANgordeta==$NAN){
-    	    $sql2 = "UPDATE ERABILTZAILEA SET 		   Izena=?,Pasahitza=?,Abizenak=?,NAN=?,Telefonoa=?,Jaiotzedata=?,email=? WHERE NAN=?";
+    	    $sql2 = "UPDATE ERABILTZAILEA SET Izena=?,Pasahitza_hash=?,Gatza=?,Abizenak=?,NAN=?,Telefonoa=?,Jaiotzedata=?,email=? WHERE NAN=?";
     	    $stmt = $mysqli->prepare($sql2);
-    	    $stmt->bind_param('ssssssss',$izena,$pasahitza,$abizenak,$NAN,$telefonoa,$jaiodata,$email,$NAN);
+    	    $stmt->bind_param('sssssssss',$izena,$hash,$gatza,$abizenak,$NAN,$telefonoa,$jaiodata,$email,$NAN);
     	    $stmt->execute();
     	    if(mysqli_stmt_errno($stmt)===0){// 0 ez bada, errore bat gertatu da.
     	        $stmt->close();

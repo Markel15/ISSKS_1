@@ -1,6 +1,10 @@
 <?php
     include 'config.php';
     $konekzioa = konektatuDatuBasera();
+
+    function eskapatu($testua){
+        return htmlspecialchars($testua);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,10 +36,10 @@
                 while ($row = $result->fetch_assoc()) {
                     echo "<div class='div_taula'>";
                     echo "<div class='div_taula_sub'>";
-                    echo "<h2>" . $row["Titulua"] . "</h2>";
+                    echo "<h2>" . eskapatu($row["Titulua"]) . "</h2>";
                     echo "</div>";
                     echo "<div class='div_taula_sub'>";
-                    echo "<p>Egilea: " . $row["Autorea"] . "</p>";
+                    echo "<p>Egilea: " . eskapatu($row["Autorea"]) . "</p>";
                     echo "</div>";
                     echo "</div>";
                     echo "<table style='display: none;'>";
@@ -49,13 +53,13 @@
                     echo "<th></th>";
                     echo "</tr>";
                     echo "<tr>";
-                    echo "<td>" . $row["Titulua"] . "</td>";
-                    echo "<td>" . $row["Autorea"] . "</td>";
-                    echo "<td>" . $row["Generoa"] . "</td>";
-                    echo "<td>" . $row["Prezioa"] . "</td>";
-                    echo "<td>" . $row["ISBN"] . "</td>";
-                    echo "<td onclick='liburuaEditatuLeihoa(\"" . $row["Titulua"] . "\",\"" . $row["Autorea"] . "\",\"" . $row["Generoa"] . "\"," . $row["Prezioa"] . ",\"" . $row["ISBN"] . "\")'>Editatu</td>";
-                    echo "<td onclick='liburuaEzabatu(\"" . $row["ISBN"] . "\")'>Ezabatu</td>";
+                    echo "<td>" . eskapatu($row["Titulua"]) . "</td>";
+                    echo "<td>" . eskapatu($row["Autorea"]) . "</td>";
+                    echo "<td>" . eskapatu($row["Generoa"]) . "</td>";
+                    echo "<td>" . eskapatu($row["Prezioa"]) . "</td>";
+                    echo "<td>" . eskapatu($row["ISBN"]) . "</td>";
+                    echo "<td onclick='liburuaEditatuLeihoa(\"" . eskapatu($row["Titulua"]) . "\",\"" . eskapatu($row["Autorea"]) . "\",\"" . eskapatu($row["Generoa"]) . "\"," . eskapatu($row["Prezioa"]) . ",\"" . eskapatu($row["ISBN"]) . "\")'>Editatu</td>";
+                    echo "<td onclick='liburuaEzabatu(\"" . eskapatu($row["ISBN"]) . "\")'>Ezabatu</td>";
                     // ISBNren balioa kate bat da (string), komatxo sinpleetan biltzen duzula ziurtatu behar da ^^
                     echo "</tr>";
                     echo "</table>";
