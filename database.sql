@@ -29,7 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `ERABILTZAILEA` (
   `Izena` varchar(20) NOT NULL,
-  `Pasahitza` varchar(20) NOT NULL,
+  `Pasahitza_hash` varchar(255) NOT NULL,
+  `Gatza` varchar(32) NOT NULL,
   `Abizenak` varchar(25) NOT NULL,
   `NAN` varchar(20) NOT NULL,
   `Telefonoa` varchar(15) NOT NULL,
@@ -41,9 +42,8 @@ CREATE TABLE `ERABILTZAILEA` (
 -- Volcado de datos para la tabla `ERABILTZAILEA`
 --
 
-INSERT INTO `ERABILTZAILEA` (`Izena`, `Pasahitza`, `Abizenak`, `NAN`, `Telefonoa`, `Jaiotzedata`, `email`) VALUES
-('ANDER', 'ANDER', 'pruébáñÑ', '11111111-H', '123456789', '1960-12-12', 'email@gmail.com'),
-('Juan', 'prueba3', 'Perez', '22222222-J', '123456788', '1980-10-02', 'juan@gmail.com');
+INSERT INTO `ERABILTZAILEA` (`Izena`, `Pasahitza_hash`, `Gatza`, `Abizenak`, `NAN`, `Telefonoa`, `Jaiotzedata`, `email`) VALUES
+('ANDER', '$2y$10$kcU/o1OLRDVx2G7pr14Ct.ghM2I0MbdCUeBSyAVJR7wATv4vn5xUu', 'f93e7a55874ffbad284962fba4717706', 'pruébáñÑ', '11111111-H', '123456789', '1960-12-12', 'email@gmail.com');
 
 -- --------------------------------------------------------
 
