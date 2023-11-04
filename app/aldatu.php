@@ -2,21 +2,30 @@
 
     include 'config.php';
     $konexioa = konektatuDatuBasera();
+    $mysqli = sortuMysqli();
     //Datuak lortu
     session_start();
     $erab = $_SESSION['erabiltzailea'];//erabiltzailearen balioa lortu
-    $sql="SELECT * FROM ERABILTZAILEA WHERE Izena='$erab'";
-    $result=mysqli_query($konexioa,$sql);
-    if(!$result){
-    	die('Kontsulta exekutatzean errorea: ' . mysqli_error($konexioa));
+    if(!isset($erab)){//Erasotzaile bat zuzenan sartzen saiatzen bada, ez da balioa existituko
+    	header('Location: login.html');
     }
+    $sql="SELECT * FROM ERABILTZAILEA WHERE Izena=?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("s", $erab);
+    $stmt->execute();
+    $result=$stmt->get_result();
+    if(mysqli_num_rows($result)===0){//Erabiltzaile Izena ez bada existitzen
+    	die('Erabiltzailea ez da aurkitu');
+    }
+    $stmt->close();
     $row=mysqli_fetch_assoc($result);
     $abizenak=$row['Abizenak'];
-    $NAN=$row['NAN'];
+    $NANgordeta=$row['NAN'];
     $telefonoa=$row['Telefonoa'];
     $jaiodata=$row['Jaiotzedata'];
     $email=$row['email'];
     $pasahitza=$row['Pasahitza'];
+	$gatza = $row['Gatza'];
     
     if(isset($_POST['submit'])){
     	$izena=$_POST['Izena'];
@@ -26,19 +35,28 @@
     	$jaiodata=$_POST['JaioData'];
     	$email=$_POST['Email'];
     	$pasahitza=$_POST['pasahitza'];
-    	$sql2 = "UPDATE ERABILTZAILEA SET Izena='$izena',Pasahitza='$pasahitza',Abizenak='$abizenak',NAN='$NAN',Telefonoa='$telefonoa',Jaiotzedata='$jaiodata',email='$email' WHERE NAN='$NAN'";
-    	$result2=mysqli_query($konexioa,$sql2);
-    	if($result2){
-    		//header('Location: index.php');
+		$pasahitza_konbinatua = $pasahitza . $gatza;
+		$hash = password_hash($pasahitza_konbinatua, PASSWORD_DEFAULT);
+    	if($NANgordeta==$NAN){
+    	    $sql2 = "UPDATE ERABILTZAILEA SET Izena=?,Pasahitza_hash=?,Gatza=?,Abizenak=?,NAN=?,Telefonoa=?,Jaiotzedata=?,email=? WHERE NAN=?";
+    	    $stmt = $mysqli->prepare($sql2);
+    	    $stmt->bind_param('sssssssss',$izena,$hash,$gatza,$abizenak,$NAN,$telefonoa,$jaiodata,$email,$NAN);
+    	    $stmt->execute();
+    	    if(mysqli_stmt_errno($stmt)===0){// 0 ez bada, errore bat gertatu da.
+    	        $stmt->close();
     		echo '<script>';
 		echo 'if(confirm("Informazioa gorde da era egokian. Hasierako orrira joan nahi duzu?")){';
 		echo 'window.location.href = "index.php";';
 		echo '}';
 		echo '</script>';
-    	}
-    	else{
-    		die(" MYSQL errorea: " + mysqli_error($konexioa));
+    	    }
+    	     else{
+    		die(" MYSQL errorea");
+    	    }
     	} 
+    	else{
+    	    die("Ezin da beste erabiltzaile baten datuak aldatu");
+    	}
     }
     mysqli_close($konexioa);
 ?>
@@ -63,13 +81,13 @@
     <div id="div_sign">
     	<form method="post" id="formul" class="login_formularioa">
         	<div class="div_formularioa">
-                		<input type="text" class="borde_ez" id="Izena" name="Izena" placeholder="Izena" pattern ="[A-Za-záéíóúñÁÉÍÓÚÑ]+" required title="Textua bakarrik onartzen da" value="<?php echo $erab ?>">
+                		<input type="text" class="borde_ez" id="Izena" name="Izena" placeholder="Izena" pattern ="[A-Za-záéíóúñÁÉÍÓÚÑ\s]+" required title="Textua bakarrik onartzen da" value="<?php echo $erab ?>">
             		</div>
             		<div class="div_formularioa">
-                		<input type="text" class="borde_ez" id="Abizenak" name="Abizenak" placeholder="Abizena" pattern ="[A-Za-záéíóúñÁÉÍÓÚÑ]+" required title="Textua bakarrik onartzen da" value="<?php echo $abizenak ?>">
+                		<input type="text" class="borde_ez" id="Abizenak" name="Abizenak" placeholder="Abizena" pattern ="[A-Za-záéíóúñÁÉÍÓÚÑ\s]+" required title="Textua bakarrik onartzen da" value="<?php echo $abizenak ?>">
             		</div>
             		<div class="div_formularioa">
-                		<input type="text" class="borde_ez" id="NAN" name="NAN" placeholder="NAN" pattern="^[0-9]{8}-[A-Z]$" required title="formatua: 11111111-Z" value="<?php echo $NAN ?>" readonly> <!-- Ezin da aldatu gakoa (readonly) -->
+                		<input type="text" class="borde_ez" id="NAN" name="NAN" placeholder="NAN" pattern="^[0-9]{8}-[A-Z]$" required title="formatua: 11111111-Z" value="<?php echo $NANgordeta ?>" readonly> <!-- Ezin da aldatu gakoa (readonly) -->
             		</div>
                 <div class="div_formularioa">
                 		<input type="text" class="borde_ez" id="Telefonoa" name="Telefonoa" placeholder="Telefonoa" pattern="[0-9]{9}" required title ="9 zenbaki izan behar dira"value="<?php echo $telefonoa ?>">

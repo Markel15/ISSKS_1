@@ -6,19 +6,26 @@ function pasahitzaEgokiaDa() {
     // Aldagaiak hartu
     global $erabiltzailea, $pasahitza, $konexioa;
     // Erabiltzailea bilatu datu-basean
-    $query = "SELECT * FROM ERABILTZAILEA WHERE Izena = '$erabiltzailea'";
-    $datuak = $konexioa->query($query);
+    // Kontsulta prestatua sortu
+    $stmt = $konexioa->prepare("SELECT * FROM ERABILTZAILEA WHERE Izena = ?");
+    // Erabiltzaile izena parametro gisa lotu
+    $stmt->bind_param("s", $erabiltzailea);
+    // Kontsulta exekutatu
+    $stmt->execute();
+    // Emaitzak lortu
+    $datuak = $stmt->get_result();
 
     if ($datuak) {
         if ($datuak->num_rows == 1) {
             $fila = $datuak->fetch_assoc();
-            $gordetakoPasahitza = $fila['Pasahitza'];
+            $gordetakoPasahitza = $fila['Pasahitza_hash'];
+            $gatza = $fila['Gatza'];
 
             // Pasahitza egokia dela egiaztatu
-            if ($pasahitza == $gordetakoPasahitza) {
+            if (password_verify($pasahitza . $gatza, $gordetakoPasahitza)) {
                 // Pasahitza egokia da
                 session_start();
-		$_SESSION['erabiltzailea'] = $erabiltzailea; //Sesioa hasi, beste orrietan erabiltzailea lortzeko
+		        $_SESSION['erabiltzailea'] = $erabiltzailea; //Sesioa hasi, beste orrietan erabiltzailea lortzeko
                 return true;
             }
             else {
