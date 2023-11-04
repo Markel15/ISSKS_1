@@ -41,7 +41,7 @@ function pasahitzaEgokiaDa() {
     }
     else {
         // Konektatzerakoan errorea gertatu
-        echo "Errorea kontsultan: " . $konexioa->error;
+        echo "Errorea kontsultan";
     }
 }
 
