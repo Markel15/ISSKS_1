@@ -24,7 +24,7 @@ Docker eta docker-compose zure sisteman aurretik instalatuta dauzkazula ziurtatu
    $ git clone https://github.com/Markel15/ISSKS_1.git
    ```
    
-2. Direktoriora joan eta "entrega_1" branch-a aukeratu:
+2. Direktoriora joan eta "entrega_2" branch-a aukeratu:
 
    ```bash
    $ cd ./ISSKS_1
@@ -37,7 +37,7 @@ Docker eta docker-compose zure sisteman aurretik instalatuta dauzkazula ziurtatu
    $ docker build -t="web" .
    ```
 
-   (Aurreitk sortutako irudi eta edukiontzi guztiak ezabatzeko:)
+   (Aurretik sortutako irudi eta edukiontzi guztiak ezabatzeko:)
    ```bash
    $ docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && docker rmi $(docker images -q)
    ```
