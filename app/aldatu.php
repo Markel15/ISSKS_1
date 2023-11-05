@@ -19,13 +19,12 @@
     }
     $stmt->close();
     $row=mysqli_fetch_assoc($result);
+    $erab = $row['Izena'];
     $abizenak=$row['Abizenak'];
     $NANgordeta=$row['NAN'];
     $telefonoa=$row['Telefonoa'];
     $jaiodata=$row['Jaiotzedata'];
     $email=$row['email'];
-    $pasahitza=$row['Pasahitza'];
-	$gatza = $row['Gatza'];
     
     if(isset($_POST['submit'])){
     	$izena=$_POST['Izena'];
@@ -35,8 +34,29 @@
     	$jaiodata=$_POST['JaioData'];
     	$email=$_POST['Email'];
     	$pasahitza=$_POST['pasahitza'];
-		$pasahitza_konbinatua = $pasahitza . $gatza;
-		$hash = password_hash($pasahitza_konbinatua, PASSWORD_DEFAULT);
+    	// Ohiko pasahitzen lista lortu fitxategi batetik
+	$common_passwords = file('common_passwords.txt', FILE_IGNORE_NEW_LINES);
+	// Pasahitza ohiko pasahitzen listarekin konparatu
+	if (in_array($pasahitza, $common_passwords)) {
+  	// Pasahitza listan badago prozesua amaitu
+		echo '<script>';
+		echo 'alert("Zure pasahitza oso ohikoa da")';
+		echo '</script>';
+		echo '<script>window.location.href = "aldatu.php";</script>; ';
+		exit();
+  	}
+  	// pasahitzaren konplexutasuna konprobatu
+	$uppercase = preg_match('@[A-Z]@', $pasahitza);
+	$lowercase = preg_match('@[a-z]@', $pasahitza);
+	$number    = preg_match('@[0-9]@', $pasahitza);
+	if(!$uppercase || !$lowercase || !$number || strlen($pasahitza) < 8) {
+    		echo '<script>';
+		echo 'alert("Zure pasahitzak ez du konplexutasun nahikorik. 8 karaktereko luzera, hizki bat maiuskulaz eta hizki bat minuskulaz izan behar ditu gutxienez")';
+		echo '</script>';
+		echo '<script>window.location.href = "aldatu.php";</script>; ';
+		exit();
+	}
+	$hash = password_hash($pasahitza, PASSWORD_DEFAULT);
     	if($NANgordeta==$NAN){
     	    $sql2 = "UPDATE ERABILTZAILEA SET Izena=?,Pasahitza_hash=?,Gatza=?,Abizenak=?,NAN=?,Telefonoa=?,Jaiotzedata=?,email=? WHERE NAN=?";
     	    $stmt = $mysqli->prepare($sql2);
@@ -99,7 +119,7 @@
                 		<input type="email" class="borde_ez" id="Email" name="Email" placeholder="Email" required title="formatu egokia: adibidea@zerbitzaria.extensioa" value="<?php echo $email ?>">
             		</div>
             		<div class="div_formularioa">
-                		<input type="password" class="borde_ez" id="pasahitza" name="pasahitza" placeholder="Pasahitza" required value="<?php echo $pasahitza ?>">
+                		<input type="password" class="borde_ez" id="pasahitza" name="pasahitza" placeholder="Pasahitza" required>
             		</div>
             		<div class="div_formularioa">
                 		<button type="submit" id="iz_em_bot" name="submit">Datuak aldatu</button>

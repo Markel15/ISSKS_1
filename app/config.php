@@ -11,7 +11,7 @@ function konektatuDatuBasera() {
 
     // Konekzioa egiaztatu    
     if (!$konekzioa) {
-        die("Datu-basearekin konexioan errorea: " . mysqli_connect_error());
+        die("Datu-basearekin konexioan errorea");
     }
     return $konekzioa;
 }
@@ -21,7 +21,7 @@ function sortuMysqli(){
     $mysqli = new mysqli('db', 'admin', 'test', 'database');
     //Konprobatu konexioa
     if($mysqli->connect_error) {
-    	die("Konexioan errorea : " . $mysqli->connect_error);
+    	die("Konexioan errorea ");
     }
     return $mysqli;
 }
