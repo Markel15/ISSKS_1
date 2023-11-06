@@ -58,9 +58,9 @@
 	}
 	$hash = password_hash($pasahitza, PASSWORD_DEFAULT);
     	if($NANgordeta==$NAN){
-    	    $sql2 = "UPDATE ERABILTZAILEA SET Izena=?,Pasahitza_hash=?,Gatza=?,Abizenak=?,NAN=?,Telefonoa=?,Jaiotzedata=?,email=? WHERE NAN=?";
+    	    $sql2 = "UPDATE ERABILTZAILEA SET Izena=?,Pasahitza_hash=?,Abizenak=?,NAN=?,Telefonoa=?,Jaiotzedata=?,email=? WHERE NAN=?";
     	    $stmt = $mysqli->prepare($sql2);
-    	    $stmt->bind_param('sssssssss',$izena,$hash,$gatza,$abizenak,$NAN,$telefonoa,$jaiodata,$email,$NAN);
+    	    $stmt->bind_param('ssssssss',$izena,$hash,$abizenak,$NAN,$telefonoa,$jaiodata,$email,$NAN);
     	    $stmt->execute();
     	    if(mysqli_stmt_errno($stmt)===0){// 0 ez bada, errore bat gertatu da.
     	        $stmt->close();
