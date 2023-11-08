@@ -13,7 +13,6 @@
     if(!isset($erab)){//Erasotzaile bat zuzenan sartzen saiatzen bada, ez da balioa existituko
 	echo '<script>alert("Izan liteke zure saioa amaitu izatea, saioa hasi berriz mesedez");</script>';
 	echo '<script>window.location.href = "login.html";</script>; ';
-    	header('Location: login.html');
     }
     $sql="SELECT * FROM ERABILTZAILEA WHERE Izena=?";
     $stmt = $mysqli->prepare($sql);
