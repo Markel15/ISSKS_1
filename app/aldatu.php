@@ -3,10 +3,16 @@
     include 'config.php';
     $konexioa = konektatuDatuBasera();
     $mysqli = sortuMysqli();
+    ini_set('session.use_only_cookies',1);
+    ini_set('session.use_strict_mode',1);
+    ini_set('session.hash_function','sha256');
+    session_set_cookie_params(300,'/','localhost',false,true);
     //Datuak lortu
     session_start();
     $erab = $_SESSION['erabiltzailea'];//erabiltzailearen balioa lortu
     if(!isset($erab)){//Erasotzaile bat zuzenan sartzen saiatzen bada, ez da balioa existituko
+	echo '<script>alert("Izan liteke zure saioa amaitu izatea, saioa hasi berriz mesedez");</script>';
+	echo '<script>window.location.href = "login.html";</script>; ';
     	header('Location: login.html');
     }
     $sql="SELECT * FROM ERABILTZAILEA WHERE Izena=?";
@@ -40,7 +46,7 @@
 	if (in_array($pasahitza, $common_passwords)) {
   	// Pasahitza listan badago prozesua amaitu
 		echo '<script>';
-		echo 'alert("Zure pasahitza oso ohikoa da")';
+		echo 'alert("Zure pasahitza oso ohikoa da");';
 		echo '</script>';
 		echo '<script>window.location.href = "aldatu.php";</script>; ';
 		exit();
@@ -51,7 +57,7 @@
 	$number    = preg_match('@[0-9]@', $pasahitza);
 	if(!$uppercase || !$lowercase || !$number || strlen($pasahitza) < 8) {
     		echo '<script>';
-		echo 'alert("Zure pasahitzak ez du konplexutasun nahikorik. 8 karaktereko luzera, hizki bat maiuskulaz eta hizki bat minuskulaz izan behar ditu gutxienez")';
+		echo 'alert("Zure pasahitzak ez du konplexutasun nahikorik. 8 karaktereko luzera, hizki bat maiuskulaz eta hizki bat minuskulaz izan behar ditu gutxienez");';
 		echo '</script>';
 		echo '<script>window.location.href = "aldatu.php";</script>; ';
 		exit();
