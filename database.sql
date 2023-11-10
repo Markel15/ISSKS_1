@@ -63,7 +63,6 @@ CREATE TABLE `LIBURUA` (
 --
 
 INSERT INTO `LIBURUA` (`Titulua`, `Autorea`, `Generoa`, `Prezioa`, `ISBN`) VALUES
-(';alert(1)', ';alert(1)', 'Abentura', 32, '\' AND 1=1 --'),
 ('El Código Da Vinci', 'Dan Brown', 'Misterioa', 18.5, '978-0307474278'),
 ('Dune', 'Frank Herbert', 'Zientzia-fikzioa', 25.99, '978-0450011849'),
 ('The Lord of the Rings', 'J.R.R. Tolkien', 'Fantasia', 30.05, '978-980-14-2517-5'),
