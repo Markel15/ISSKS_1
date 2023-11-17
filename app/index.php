@@ -1,9 +1,12 @@
 <?php
     include 'config.php';
+    ini_set('session.use_only_cookies',1);
+    ini_set('session.use_strict_mode',1);
+    ini_set('session.hash_function','sha256');
+    //header("Content-Security-Policy: default-src 'self'; script-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; img-src 'self';");
     $konekzioa = konektatuDatuBasera();
-
     function eskapatu($testua){
-        return htmlspecialchars($testua);
+        return str_replace(";","",htmlspecialchars($testua, ENT_QUOTES | ENT_SUBSTITUTE, "UTF-8"));
     }
 ?>
 <!DOCTYPE html>
@@ -69,6 +72,20 @@
             ?>
         </div>
     </div>
+    <?php
+    	if($_POST){
+    	    session_start();//Saioa hasi csrf token-a gordetzeko
+    	    $token = bin2hex(random_bytes(16));//token-a sortu
+    	    $_SESSION['token']=$token;
+    	    $csrf= $_POST['csrf'];
+    	    if($_SESSION['csrf'] === $csrf){
+    	    	unset($SESSION['csrf']);
+    	    }
+    	    else{
+    	    	echo 'CSRF erasoa';
+    	    }
+    	}
+    ?>
     <div id="botoi_biribila"><p>+</p></div>
     <div id="div_modal">
         <div id="div_modal_sub">
@@ -103,6 +120,7 @@
                 <input type="hidden" id="input_isbnAurrekoa" name="isbnAurrekoa" value="">
 
                 <input type="hidden" id="hidden_akzioa" name="akzioa" value="gehitu">
+                <input type="hidden" name="csrf" value="<?php echo $token; ?>">
                 <button type="submit" onclick="return formularioaBalioztatu()">Bidali</button>
             </form>
         </div>
