@@ -69,7 +69,7 @@ function saioanSartu() {
 
 function iEmanOrrira(){
 	event.preventDefault();
-	window.location.href = "sign.html";
+	window.location.href = "sign_form.php";
 }
 
 function izenaEman(){

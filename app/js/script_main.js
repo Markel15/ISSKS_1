@@ -92,7 +92,7 @@ function liburuaEzabatu(isbn){
     	var url = `/functions_main.php?isbn=${isbn}`;
 
     	xhr.open('DELETE', url, true);
-
+ 
     	xhr.onreadystatechange = function () {
             if (xhr.readyState === XMLHttpRequest.DONE) {
             	if (xhr.status === 200) {
@@ -111,7 +111,7 @@ function liburuaEzabatu(isbn){
 }
 function aldatuOrrira(){
 	event.preventDefault();
-	window.location.href = "login.html";
+	window.location.href = "login.php";
 }
 
 var current_taula = null;
