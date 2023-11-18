@@ -1,6 +1,5 @@
 <?php
 	include 'config.php';
-
 	//MySQLi objektua sortu
 	$konekzioa = konektatuDatuBasera();
 
@@ -20,7 +19,7 @@
 		echo '<script>';
 		echo 'alert("Zure pasahitza oso ohikoa da")';
 		echo '</script>';
-		echo '<script>window.location.href = "sign.html";</script>; ';
+		echo '<script>window.location.href = "sign_form.php";</script>; ';
 		exit();
   	}
   	// pasahitzaren konplexutasuna konprobatu
@@ -31,7 +30,7 @@
     		echo '<script>';
 		echo 'alert("Zure pasahitzak ez du konplexutasun nahikorik. 8 karaktereko luzera, hizki bat maiuskulaz eta hizki bat minuskulaz izan behar ditu gutxienez")';
 		echo '</script>';
-		echo '<script>window.location.href = "sign.html";</script>; ';
+		echo '<script>window.location.href = "sign_form.php";</script>; ';
 		exit();
 	}
 	$hash = password_hash($pasahitza, PASSWORD_DEFAULT);
@@ -45,7 +44,6 @@
 	}
     	
 	if ($stmt->affected_rows === 1) {
-		//header('Location: index.php');
 		echo '<script>';
 		echo 'alert("Izena eman duzu era egokian, orain hasierako orrira bueltatuko zara")';
 		echo '</script>';

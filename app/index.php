@@ -2,7 +2,12 @@
     include 'config.php';
     ini_set('session.use_only_cookies',1);
     ini_set('session.use_strict_mode',1);
+    ini_set('session.cookie_httponly',1);
+    ini_set('sesion.cookie_samesite',1);
     ini_set('session.hash_function','sha256');
+    session_start();//Saioa hasi csrf token-a gordetzeko
+    $token = bin2hex(random_bytes(16));//token-a sortu
+    $_SESSION['token']=$token;
     //header("Content-Security-Policy: default-src 'self'; script-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; img-src 'self';");
     $konekzioa = konektatuDatuBasera();
     function eskapatu($testua){
@@ -74,12 +79,10 @@
     </div>
     <?php
     	if($_POST){
-    	    session_start();//Saioa hasi csrf token-a gordetzeko
-    	    $token = bin2hex(random_bytes(16));//token-a sortu
-    	    $_SESSION['token']=$token;
+    	    session_start();
     	    $csrf= $_POST['csrf'];
-    	    if($_SESSION['csrf'] === $csrf){
-    	    	unset($_SESSION['csrf']);
+    	    if($_SESSION['token'] === $csrf){
+    	    	unset($_SESSION['token']);
     	    }
     	    else{
     	    	echo 'CSRF erasoa';
