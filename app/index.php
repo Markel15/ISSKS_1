@@ -79,7 +79,7 @@
     	    $_SESSION['token']=$token;
     	    $csrf= $_POST['csrf'];
     	    if($_SESSION['csrf'] === $csrf){
-    	    	unset($SESSION['csrf']);
+    	    	unset($_SESSION['csrf']);
     	    }
     	    else{
     	    	echo 'CSRF erasoa';
