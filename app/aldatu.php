@@ -6,7 +6,6 @@
     ini_set('session.use_only_cookies',1);
     ini_set('session.use_strict_mode',1);
     ini_set('session.cookie_httponly',1);
-    ini_set('sesion.cookie_samesite',1);
     ini_set('session.hash_function','sha256');
     session_set_cookie_params(300,'/','localhost',false,true);
     session_start();//Saioa hasi csrf token-a gordetzeko
