@@ -7,7 +7,6 @@
     session_start();//Saioa hasi csrf token-a gordetzeko
     $token = bin2hex(random_bytes(16));//token-a sortu
     $_SESSION['token']=$token;
-    //header("Content-Security-Policy: default-src 'self'; script-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; img-src 'self';");
     $konekzioa = konektatuDatuBasera();
     function eskapatu($testua){
         return str_replace(";","",htmlspecialchars($testua, ENT_QUOTES | ENT_SUBSTITUTE, "UTF-8"));

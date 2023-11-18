@@ -138,7 +138,7 @@
                 		<input type="email" class="borde_ez" id="Email" name="Email" placeholder="Email" required title="formatu egokia: adibidea@zerbitzaria.extensioa" value="<?php echo $email ?>">
             		</div>
             		<div class="div_formularioa">
-                		<input type="password" class="borde_ez" id="pasahitza" name="pasahitza" placeholder="Pasahitza" required>
+                		<input type="password" class="borde_ez" id="pasahitza" name="pasahitza" placeholder="Pasahitza" required autocomplete="off">
             		</div>
             		<div class="div_formularioa">
                 		<button type="submit" id="iz_em_bot" name="submit">Datuak aldatu</button>

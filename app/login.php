@@ -45,7 +45,7 @@
                 <input type="text" class="borde_ez" id="erabiltzailea" placeholder="Erabiltzailea">
             </div>
             <div class="div_formularioa">
-                <input type="password" class="borde_ez" id="pasahitza" placeholder="Pasahitza">
+                <input type="password" class="borde_ez" id="pasahitza" placeholder="Pasahitza" autocomplete="off">
             </div>
             <div class="div_formularioa">
                 <button id="login_botoia">Sartu saioan</button>
