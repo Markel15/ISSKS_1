@@ -4,7 +4,6 @@ include 'config.php';
 ini_set('session.use_only_cookies',1);//Bakarrik baimendu session_id-ren erabilpena cookien bitartez eta ez URL-ren bidez
 ini_set('session.use_strict_mode',1);//Baimendu bakarrik erabiltzen gure zerbitzariak sortutako saio identifikatzaileak
 ini_set('session.cookie_httponly',1);
-ini_set('sesion.cookie_samesite',1);
 ini_set('session.hash_function','sha256');//Aldatu hash algoritmoa seguruagoa den batekin, defektuz MD5 da.
 session_set_cookie_params(300,'/','localhost',false,true);//5 minutuko cookie-aren lifetime-a, cookie-ak lan egingo duen path-a '/' erabilita domeinuaren path guztiak dira, cookie-aren domeinua, secure modua false-n bestela ez da funtzionatuko gure web orria http-n dabilelako bakarrik, true httponly ez uzteko script-en bidez gure cookie-tara heltzea.
 function pasahitzaEgokiaDa() {
