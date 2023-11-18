@@ -104,6 +104,20 @@
         </div>
     </header>
     <div id="div_sign">
+    <?php
+        if($_POST){
+  	    session_start();//Saioa hasi csrf token-a gordetzeko
+	    $token = bin2hex(random_bytes(16));//token-a sortu
+	    $_SESSION['token']=$token;
+	    $csrf= $_POST['csrf'];
+	    if($_SESSION['csrf'] === $csrf){
+	        unset($SESSION['csrf']);
+	    }
+	    else{
+	        echo 'CSRF erasoa';
+	    }
+        }
+    ?>
     	<form method="post" id="formul" class="login_formularioa">
         	<div class="div_formularioa">
                 		<input type="text" class="borde_ez" id="Izena" name="Izena" placeholder="Izena" pattern ="[A-Za-záéíóúñÁÉÍÓÚÑ\s]+" required title="Textua bakarrik onartzen da" value="<?php echo $erab ?>">
@@ -129,6 +143,7 @@
             		<div class="div_formularioa">
                 		<button type="submit" id="iz_em_bot" name="submit">Datuak aldatu</button>
              		</div>
+             		<input type="hidden" name="csrf" value="<?php echo $token; ?>">
              	</form>
     </div>
     <script src="js/script.js"></script>
