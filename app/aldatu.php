@@ -8,15 +8,12 @@
     ini_set('session.cookie_httponly',1);
     ini_set('session.hash_function','sha256');
     session_set_cookie_params(300,'/','localhost',false,true);
-    session_start();//Saioa hasi csrf token-a gordetzeko
-    $token = bin2hex(random_bytes(16));//token-a sortu
-    $_SESSION['token']=$token;
     //Datuak lortu
     session_start();
     $erab = $_SESSION['erabiltzailea'];//erabiltzailearen balioa lortu
     if(!isset($erab)){//Erasotzaile bat zuzenan sartzen saiatzen bada, ez da balioa existituko
 	echo '<script>alert("Izan liteke zure saioa amaitu izatea, saioa hasi berriz mesedez");</script>';
-	echo '<script>window.location.href = "login_form.php";</script>; ';
+	echo '<script>window.location.href = "login.php";</script>; ';
     }
     $sql="SELECT * FROM ERABILTZAILEA WHERE Izena=?";
     $stmt = $mysqli->prepare($sql);
@@ -26,6 +23,9 @@
     if(mysqli_num_rows($result)===0){//Erabiltzaile Izena ez bada existitzen
     	die('Erabiltzailea ez da aurkitu');
     }
+    session_start();//Saioa hasi csrf token-a gordetzeko
+    $token = bin2hex(random_bytes(16));//token-a sortu
+    $_SESSION['token']=$token;
     $stmt->close();
     $row=mysqli_fetch_assoc($result);
     $erab = $row['Izena'];
@@ -83,7 +83,6 @@
     	else{
     	    die("Ezin da beste erabiltzaile baten datuak aldatu");
     	}
-    	session_destroy();//orri honetatik atera eta gero saioa ixten da
     }
     mysqli_close($konexioa);
 ?>

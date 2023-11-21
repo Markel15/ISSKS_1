@@ -32,6 +32,7 @@
         </div>
     </header>
     <button id="datuak_aldatu">Datuak aldatu / Izena eman</button>
+    <button id="saioa_itxi">Saioa itxi</button>
     <div id="div_nagusia">
         <h3>Xehetasunak ikusteko, kutxa batean klikatu:</h3>
         <div id="div_edukia">
