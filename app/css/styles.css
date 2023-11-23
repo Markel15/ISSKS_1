@@ -5,6 +5,8 @@
     --color4: #91C8E4;
     --color5: #FFFF00;
     --color6: #FF0000;
+    --color7: #DC143C;
+    --color8: #B22222;
 }
 
 * {
@@ -145,5 +147,20 @@ html, body {
 }
 
 .borde_ez {
+    border: none;
+}
+#saioa_itxi{
+    background-color: var(--color7);
+    border: none;
+    position:absolute;
+    padding: 10px 20px;
+    top:120px;
+    right:20px;
+    border-radius: 7px;
+}	
+
+#saioa_itxi:hover{
+    background-color: var(--color8);
+    text-decoration: underline; 
     border: none;
 }

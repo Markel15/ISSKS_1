@@ -7,8 +7,6 @@
     --color6: #FF0000;
     --color7: #800080;
     --color8: #540154;
-    --color9: #DC143C;
-    --color10: #B22222;
 }
 
 * {
@@ -226,20 +224,6 @@ button:hover {
 
 #datuak_aldatu:hover{
     background-color: var(--color8);
-    text-decoration: underline; 
-    border: none;
-}
-#saioa_itxi{
-    background-color: var(--color9);
-    border: none;
-    position:absolute;
-    top:200px;
-    right:10px;
-    border-radius: 7px;
-}	
-
-#saioa_itxi:hover{
-    background-color: var(--color10);
     text-decoration: underline; 
     border: none;
 }
