@@ -104,6 +104,7 @@
             <h1 id="izenburua">Datuak aldatu</h1>
         </div>
     </header>
+    <button id="saioa_itxi">Saioa itxi</button>
     <div id="div_sign">
     <?php
         if($_POST){
