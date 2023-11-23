@@ -113,10 +113,6 @@ function aldatuOrrira(){
 	event.preventDefault();
 	window.location.href = "aldatu.php";
 }
-function itxiSaioa(){
-	event.preventDefault();
-	window.location.href = "logout.php";
-}
 var current_taula = null;
 const div_taulak = document.getElementsByClassName("div_taula");
 for (let i = 0; i < div_taulak.length; i++) {
@@ -133,8 +129,4 @@ const div_opaku = document.getElementById("div_opaku");
 var aldatu_botoia = document.getElementById("datuak_aldatu");
 if (aldatu_botoia) {
     aldatu_botoia.addEventListener("click", aldatuOrrira);
-}
-var itxi_botoia=document.getElementById("saioa_itxi");
-if (itxi_botoia){
-    itxi_botoia.addEventListener("click",itxiSaioa);
 }

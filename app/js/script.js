@@ -105,6 +105,10 @@ function nanKonprobatu(){
 	}
     }
 }
+function itxiSaioa(){
+	event.preventDefault();
+	window.location.href = "logout.php";
+}
 
 // Formularioa lortu eta bidalketa ekitaldi bat gehitu
 const erabiltzailea_hutsune = document.getElementById("erabiltzailea");
@@ -112,6 +116,7 @@ const pasahitza_hutsune = document.getElementById("pasahitza");
 var login_botoia = document.getElementById("login_botoia");
 var signup_botoia = document.getElementById("signup_botoia");
 var sign_botoia = document.getElementById("iz_em_bot");
+var itxi_botoia=document.getElementById("saioa_itxi");
 if (login_botoia) {
     // Konprobatu elementua existitzen dela orri honetan, bestela errorea ematen du
     login_botoia.addEventListener("click", saioanSartu);
@@ -121,4 +126,7 @@ if (signup_botoia) {
 }
 if (sign_botoia){
     sign_botoia.addEventListener("click",izenaEman);
+}
+if (itxi_botoia){
+    itxi_botoia.addEventListener("click",itxiSaioa);
 }
