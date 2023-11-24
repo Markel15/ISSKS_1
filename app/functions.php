@@ -6,6 +6,9 @@ ini_set('session.use_strict_mode',1);//Baimendu bakarrik erabiltzen gure zerbitz
 ini_set('session.cookie_httponly',1);
 ini_set('session.hash_function','sha256');//Aldatu hash algoritmoa seguruagoa den batekin, defektuz MD5 da.
 session_set_cookie_params(300,'/','localhost',false,true);//5 minutuko cookie-aren lifetime-a, cookie-ak lan egingo duen path-a '/' erabilita domeinuaren path guztiak dira, cookie-aren domeinua, secure modua false-n bestela ez da funtzionatuko gure web orria http-n dabilelako bakarrik, true httponly ez uzteko script-en bidez gure cookie-tara heltzea.
+ini_set('display_errors',0);//Erabiltzaileak erroreak ez ikusteko
+ini_set('log_errors',1);//erroreak log-eatzeko
+ini_set('error_log',__DIR__ . '/log.txt');//log fitxategian gordetzeko
 function pasahitzaEgokiaDa() {
     // Aldagaiak hartu
     global $erabiltzailea, $pasahitza, $konexioa;
@@ -29,10 +32,14 @@ function pasahitzaEgokiaDa() {
                 session_start();
                 session_regenerate_id(true);
 		$_SESSION['erabiltzailea'] = $erabiltzailea; //Saioa hasi, beste orrietan erabiltzailea lortzeko
+		$ip=$_SERVER["REMOTE_ADDR"];
+		error_log("$erabiltzailea -(e)k saioa hasi du $ip helbidetik");
                 return true;
             }
             else {
                 // Pasahitza ez da egokia
+                $ip=$_SERVER["REMOTE_ADDR"];
+                error_log("$erabiltzailea -(e)k saioa hasten saiatu da $ip helbidetik baina ez du lortu");
                 return false;
             }
         }
