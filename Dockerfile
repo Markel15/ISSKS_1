@@ -9,3 +9,4 @@ RUN a2enmod headers
 RUN echo "Header set X-Frame-Options \"SAMEORIGIN\"" >> /etc/apache2/conf-enabled/security.conf
 RUN echo "Header set X-XSS-Protection \"1; mode=block\"" >> /etc/apache2/conf-enabled/security.conf
 RUN echo "Header set X-Content-Type-Options \"nosniff\"" >> /etc/apache2/conf-enabled/security.conf
+RUN echo "chmod 666 /var/www/html/log.txt" #log fitxategia container-ean aldatu ahal izateko
