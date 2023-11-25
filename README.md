@@ -33,13 +33,13 @@ Docker eta docker-compose zure sisteman aurretik instalatuta dauzkazula ziurtatu
 
 3. Sortu Docker web irudia Dockerfile fitxategiaren bidez:
 
-   ```bash
-   $ docker build -t="web" .
-   ```
-
-   (Aurretik sortutako irudi eta edukiontzi guztiak ezabatzeko:)
+   (Aurretik sortutako irudi eta edukiontzi guztiak ezabatu nahi badituzu)
    ```bash
    $ docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && docker rmi $(docker images -q)
+   ```
+
+   ```bash
+   $ docker build -t="web" .
    ```
    
 5. Zerbitzuak hedatu:
