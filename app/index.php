@@ -1,5 +1,6 @@
 <?php
     include 'config.php';
+    header("Content-Security-Policy: default-src 'self'; script-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; img-src 'self';");
     ini_set('session.use_only_cookies',1);
     ini_set('session.use_strict_mode',1);
     ini_set('session.cookie_httponly',1);
@@ -50,7 +51,7 @@
                         echo "<p>Egilea: " . eskapatu($row["Autorea"]) . "</p>";
                         echo "</div>";
                         echo "</div>";
-                        echo "<table style='display: none;'>";
+                        echo "<table>";
                         echo "<tr>";
                         echo "<th>Izenburua</th>";
                         echo "<th>Egilea</th>";
@@ -66,9 +67,8 @@
                         echo "<td>" . eskapatu($row["Generoa"]) . "</td>";
                         echo "<td>" . eskapatu($row["Prezioa"]) . "</td>";
                         echo "<td>" . eskapatu($row["ISBN"]) . "</td>";
-                        echo "<td onclick='liburuaEditatuLeihoa(\"" . eskapatu($row["Titulua"]) . "\",\"" . eskapatu($row["Autorea"]) . "\",\"" . eskapatu($row["Generoa"]) . "\"," . eskapatu($row["Prezioa"]) . ",\"" . eskapatu($row["ISBN"]) . "\")'>Editatu</td>";
-                        echo "<td onclick='liburuaEzabatu(\"" . eskapatu($row["ISBN"]) . "\")'>Ezabatu</td>";
-                        // ISBNren balioa kate bat da (string), komatxo sinpleetan biltzen duzula ziurtatu behar da ^^
+                        echo "<td class='editatu_botoia' data-titulua=" . eskapatu($row["Titulua"]) . " data-autorea=" . eskapatu($row["Autorea"]) . " data-generoa=" . eskapatu($row["Generoa"]) . " data-prezioa=" . eskapatu($row["Prezioa"]) . " data-isbn=" . eskapatu($row["ISBN"]) . ">Editatu</td>";
+                        echo "<td class='ezabatu_botoia' data-isbn=" . eskapatu($row["ISBN"]) . ">Ezabatu</td>";
                         echo "</tr>";
                         echo "</table>";
                     }

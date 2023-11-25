@@ -113,11 +113,24 @@ function aldatuOrrira(){
 	event.preventDefault();
 	window.location.href = "aldatu.php";
 }
+
+function botoiakPrestatu(){
+    const editatu_botoiak = document.getElementsByClassName("editatu_botoia");
+    for (let i = 0; i < div_taulak.length; i++) {
+        var titulua = editatu_botoiak[i].dataset.titulua;
+        var autorea = editatu_botoiak[i].dataset.autorea;
+        var generoa = editatu_botoiak[i].dataset.generoa;
+        var prezioa = editatu_botoiak[i].dataset.prezioa;
+        var isbn = editatu_botoiak[i].dataset.isbn;
+        editatu_botoiak[i].addEventListener("click", liburuaEditatuLeihoa(titulua, autorea, generoa, prezioa, isbn));
+    }
+}
+
 var current_taula = null;
 const div_taulak = document.getElementsByClassName("div_taula");
 for (let i = 0; i < div_taulak.length; i++) {
     div_taulak[i].addEventListener("click", gehiagoErakutsi);
-  }
+}
 
 const botonMostrarRecuadro = document.getElementById("botoi_biribila");
 botonMostrarRecuadro.addEventListener("click", liburuaGehitu);
