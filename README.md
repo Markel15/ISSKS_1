@@ -51,4 +51,5 @@ Docker eta docker-compose zure sisteman aurretik instalatuta dauzkazula ziurtatu
 6. Orain, zure proiektua web nabigatzaile batean bisita dezakezu hurrengo helbidetan:
 
    http://localhost:81 (web-sistema)
+   
    http://localhost:8890 (phpmyadmin)
