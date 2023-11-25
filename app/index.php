@@ -67,8 +67,8 @@
                         echo "<td>" . eskapatu($row["Generoa"]) . "</td>";
                         echo "<td>" . eskapatu($row["Prezioa"]) . "</td>";
                         echo "<td>" . eskapatu($row["ISBN"]) . "</td>";
-                        echo "<td class='editatu_botoia' data-titulua=" . eskapatu($row["Titulua"]) . " data-autorea=" . eskapatu($row["Autorea"]) . " data-generoa=" . eskapatu($row["Generoa"]) . " data-prezioa=" . eskapatu($row["Prezioa"]) . " data-isbn=" . eskapatu($row["ISBN"]) . ">Editatu</td>";
-                        echo "<td class='ezabatu_botoia' data-isbn=" . eskapatu($row["ISBN"]) . ">Ezabatu</td>";
+                        echo "<td class='editatu_botoia' data-titulua=\"" . eskapatu($row["Titulua"]) . "\" data-autorea=\"" . eskapatu($row["Autorea"]) . "\" data-generoa=\"" . eskapatu($row["Generoa"]) . "\" data-prezioa=\"" . eskapatu($row["Prezioa"]) . "\" data-isbn=\"" . eskapatu($row["ISBN"]) . "\">Editatu</td>";
+                        echo "<td class='ezabatu_botoia' data-isbn=\"" . eskapatu($row["ISBN"]) . "\">Ezabatu</td>";
                         echo "</tr>";
                         echo "</table>";
                     }
