@@ -36,41 +36,46 @@
         <h3>Xehetasunak ikusteko, kutxa batean klikatu:</h3>
         <div id="div_edukia">
             <?php
+
                 $sql = "SELECT * FROM LIBURUA";
                 $result = $konekzioa->query($sql);
 
-                while ($row = $result->fetch_assoc()) {
-                    echo "<div class='div_taula'>";
-                    echo "<div class='div_taula_sub'>";
-                    echo "<h2>" . eskapatu($row["Titulua"]) . "</h2>";
-                    echo "</div>";
-                    echo "<div class='div_taula_sub'>";
-                    echo "<p>Egilea: " . eskapatu($row["Autorea"]) . "</p>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "<table style='display: none;'>";
-                    echo "<tr>";
-                    echo "<th>Izenburua</th>";
-                    echo "<th>Egilea</th>";
-                    echo "<th>Generoa</th>";
-                    echo "<th>Prezioa</th>";
-                    echo "<th>ISBN</th>";
-                    echo "<th></th>";
-                    echo "<th></th>";
-                    echo "</tr>";
-                    echo "<tr>";
-                    echo "<td>" . eskapatu($row["Titulua"]) . "</td>";
-                    echo "<td>" . eskapatu($row["Autorea"]) . "</td>";
-                    echo "<td>" . eskapatu($row["Generoa"]) . "</td>";
-                    echo "<td>" . eskapatu($row["Prezioa"]) . "</td>";
-                    echo "<td>" . eskapatu($row["ISBN"]) . "</td>";
-                    echo "<td onclick='liburuaEditatuLeihoa(\"" . eskapatu($row["Titulua"]) . "\",\"" . eskapatu($row["Autorea"]) . "\",\"" . eskapatu($row["Generoa"]) . "\"," . eskapatu($row["Prezioa"]) . ",\"" . eskapatu($row["ISBN"]) . "\")'>Editatu</td>";
-                    echo "<td onclick='liburuaEzabatu(\"" . eskapatu($row["ISBN"]) . "\")'>Ezabatu</td>";
-                    // ISBNren balioa kate bat da (string), komatxo sinpleetan biltzen duzula ziurtatu behar da ^^
-                    echo "</tr>";
-                    echo "</table>";
-                }
-
+                if ($result->num_rows > 0){
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<div class='div_taula'>";
+                        echo "<div class='div_taula_sub'>";
+                        echo "<h2>" . eskapatu($row["Titulua"]) . "</h2>";
+                        echo "</div>";
+                        echo "<div class='div_taula_sub'>";
+                        echo "<p>Egilea: " . eskapatu($row["Autorea"]) . "</p>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "<table style='display: none;'>";
+                        echo "<tr>";
+                        echo "<th>Izenburua</th>";
+                        echo "<th>Egilea</th>";
+                        echo "<th>Generoa</th>";
+                        echo "<th>Prezioa</th>";
+                        echo "<th>ISBN</th>";
+                        echo "<th></th>";
+                        echo "<th></th>";
+                        echo "</tr>";
+                        echo "<tr>";
+                        echo "<td>" . eskapatu($row["Titulua"]) . "</td>";
+                        echo "<td>" . eskapatu($row["Autorea"]) . "</td>";
+                        echo "<td>" . eskapatu($row["Generoa"]) . "</td>";
+                        echo "<td>" . eskapatu($row["Prezioa"]) . "</td>";
+                        echo "<td>" . eskapatu($row["ISBN"]) . "</td>";
+                        echo "<td onclick='liburuaEditatuLeihoa(\"" . eskapatu($row["Titulua"]) . "\",\"" . eskapatu($row["Autorea"]) . "\",\"" . eskapatu($row["Generoa"]) . "\"," . eskapatu($row["Prezioa"]) . ",\"" . eskapatu($row["ISBN"]) . "\")'>Editatu</td>";
+                        echo "<td onclick='liburuaEzabatu(\"" . eskapatu($row["ISBN"]) . "\")'>Ezabatu</td>";
+                        // ISBNren balioa kate bat da (string), komatxo sinpleetan biltzen duzula ziurtatu behar da ^^
+                        echo "</tr>";
+                        echo "</table>";
+                    }
+                } 
+                else{
+                    echo "<p>Oraindik ez daude libururik, datu basea hutsik dago</p>";
+                }        
                 $konekzioa->close();
             ?>
         </div>
@@ -94,7 +99,7 @@
                 <span id="modal_itxi">&times;</span>
             </div>
             <h2 id="h2_izenburua">Liburua gehitu</h2>
-            <form action="functions_main.php" method="post">
+            <form id="nireformularioa" action="functions_main.php" method="post">
                 <label for="izenburua">Izenburua:</label>
                 <input type="text" id="input_izenburua" name="izenburua">
 
@@ -122,7 +127,7 @@
 
                 <input type="hidden" id="hidden_akzioa" name="akzioa" value="gehitu">
                 <input type="hidden" name="csrf" value="<?php echo $token; ?>">
-                <button type="submit" onclick="return formularioaBalioztatu()">Bidali</button>
+                <button type="submit">Bidali</button>
             </form>
         </div>
         <div id="div_opaku"></div>

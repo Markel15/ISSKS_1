@@ -130,3 +130,20 @@ var aldatu_botoia = document.getElementById("datuak_aldatu");
 if (aldatu_botoia) {
     aldatu_botoia.addEventListener("click", aldatuOrrira);
 }
+
+// Liburua gehitu
+document.addEventListener('DOMContentLoaded', function() {
+
+    var formularioa = document.getElementById('nireformularioa');
+
+    formularioa.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var isValid = formularioaBalioztatu();
+        console.log(isValid);
+
+        if (isValid) {
+            formularioa.submit();
+        }
+    });
+});
