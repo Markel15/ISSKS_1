@@ -2,6 +2,7 @@
 
 include 'config.php';
 
+header("Content-Security-Policy: default-src 'self'; frame-ancestors 'none'; form-action 'self';");
 // Datu-basearekin konexioa ezarri
 $konexioa = konektatuDatuBasera();
 

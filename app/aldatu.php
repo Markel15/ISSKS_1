@@ -1,8 +1,12 @@
 <?php
 
     include 'config.php';
-	header("Content-Security-Policy: default-src 'self'; script-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; img-src 'self'; frame-ancestors 'self'; form-action 'self';");
-    $konexioa = konektatuDatuBasera();
+
+	$nonce = bin2hex(random_bytes(16));
+
+	header("Content-Security-Policy: default-src 'self'; script-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com 'nonce-$nonce'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; img-src 'self'; frame-ancestors 'self'; form-action 'self';");
+    
+	$konexioa = konektatuDatuBasera();
     $mysqli = sortuMysqli();
     ini_set('session.use_only_cookies',1);
     ini_set('session.use_strict_mode',1);
@@ -12,9 +16,9 @@
     //Datuak lortu
     session_start();
     $erab = $_SESSION['erabiltzailea'];//erabiltzailearen balioa lortu
-    if(!isset($erab)){//Erasotzaile bat zuzenan sartzen saiatzen bada, ez da balioa existituko
-	echo '<script>alert("Izan liteke zure saioa amaitu izatea, saioa hasi berriz mesedez");</script>';
-	echo '<script>window.location.href = "login.php";</script>; ';
+    if ( !isset($erab) ){//Erasotzaile bat zuzenan sartzen saiatzen bada, ez da balioa existituko
+		echo "<script nonce='$nonce'>alert('Izan liteke zure saioa amaitu izatea, saioa hasi berriz mesedez');</script>";
+    	echo "<script nonce='$nonce'>window.location.href = 'login.php';</script>";
     }
     $sql="SELECT * FROM ERABILTZAILEA WHERE Izena=?";
     $stmt = $mysqli->prepare($sql);
@@ -49,10 +53,10 @@
 	// Pasahitza ohiko pasahitzen listarekin konparatu
 	if (in_array($pasahitza, $common_passwords)) {
   	// Pasahitza listan badago prozesua amaitu
-		echo '<script>';
-		echo 'alert("Zure pasahitza oso ohikoa da");';
-		echo '</script>';
-		echo '<script>window.location.href = "aldatu.php";</script>; ';
+		echo "<script nonce='$nonce'>";
+		echo "alert('Zure pasahitza oso ohikoa da');";
+		echo "</script>";
+		echo "<script nonce='$nonce'>window.location.href = 'aldatu.php';</script>; ";
 		exit();
   	}
   	// pasahitzaren konplexutasuna konprobatu
@@ -60,10 +64,10 @@
 	$lowercase = preg_match('@[a-z]@', $pasahitza);
 	$number    = preg_match('@[0-9]@', $pasahitza);
 	if(!$uppercase || !$lowercase || !$number || strlen($pasahitza) < 8) {
-    		echo '<script>';
-		echo 'alert("Zure pasahitzak ez du konplexutasun nahikorik. 8 karaktereko luzera, hizki bat maiuskulaz eta hizki bat minuskulaz izan behar ditu gutxienez");';
-		echo '</script>';
-		echo '<script>window.location.href = "aldatu.php";</script>; ';
+    		echo "<script nonce='$nonce'>";
+		echo "alert('Zure pasahitzak ez du konplexutasun nahikorik. 8 karaktereko luzera, hizki bat maiuskulaz eta hizki bat minuskulaz izan behar ditu gutxienez');";
+		echo "</script>";
+		echo "<script nonce='$nonce'>window.location.href = 'aldatu.php';</script>; ";
 		exit();
 	}
 	$hash = password_hash($pasahitza, PASSWORD_DEFAULT);
@@ -74,8 +78,8 @@
     	    $stmt->execute();
     	    if(mysqli_stmt_errno($stmt)===0){// 0 ez bada, errore bat gertatu da.
     	        $stmt->close();
-		echo '<script>alert("Informazioa gorde da era egokian. Hasierako orrira joango zara")</script>';
-		echo '<script>window.location.href = "index.php";</script>';
+		echo "<script nonce='$nonce'>alert('Informazioa gorde da era egokian. Hasierako orrira joango zara')</script>";
+		echo "<script nonce='$nonce'>window.location.href = 'index.php';</script>";
     	    }
     	     else{
     		die(" MYSQL errorea");
